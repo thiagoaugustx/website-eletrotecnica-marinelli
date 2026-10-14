@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eletro Marinelli</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header" id="header">
+    <nav class="navbar container" aria-label="Navegação principal">
+        <a class="navbar__brand" href="#inicio" aria-label="Página inicial">
+            <img
+                src="imgs/logo-branca.png"
+                alt="Eletro Marinelli — Elétrica Naval & Industrial"
+            >
+        </a>
+
+        <button
+            class="navbar__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar__menu" id="navbar-menu">
+            <ul class="navbar__links">
+                <li>
+                    <a class="navbar__link" href="#inicio">
+                        Início
+                    </a>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-qualidade"
+                    >
+                        Qualidade
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-qualidade"
+                        hidden
+                    >
+                        <li>
+                            <a href="#politica-sgq">Política de SGQ</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-servicos"
+                    >
+                        Serviços
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-servicos"
+                        hidden
+                    >
+                        <li>
+                            <a href="#manutencao">
+                                Manutenção Preventiva e Corretiva
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#inspecoes">
+                                Inspeções, Testes e Parametrizações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#instalacao-retrofit">
+                                Instalação de sistemas e equipamentos e Retrofit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#paineis-eletricos">
+                                Montagem de painéis elétricos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#provas-de-mar">
+                                Apoio em provas de mar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#trabalhe-conosco">
+                        Trabalhe Conosco
+                    </a>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#contato">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+
+            <a class="button button--primary navbar__cta" href="#contato">
+                Solicitar Orçamento
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+    <main>
+        <section
+            class="hero hero--slider"
+            id="inicio"
+            aria-label="Serviços da Eletro Marinelli"
+            aria-roledescription="carrossel"
+        >
+            <div class="hero__slides" id="hero-slides">
+                <article
+                    class="hero__slide is-active"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="1 de 4"
+                >
+                    <img
+                        class="hero__image"
+                        src="imgs/slide-02.png"
+                        alt=""
+                        fetchpriority="high"
+                    >
+
+                    <div class="container hero__slide-layout">
+                        <div class="hero__content">
+                            <p class="hero__eyebrow">
+                                Elétrica Naval & Industrial
+                            </p>
+
+                            <h1 class="hero__title">
+                                Montagem de
+                                <span>painéis elétricos.</span>
+                            </h1>
+
+                            <p class="hero__description">
+                                Montagem de painéis elétricos com suporte
+                                técnico especializado, garantindo confiabilidade
+                                e desempenho em provas de mar.
+                            </p>
+
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="#servicos">
+                                    Conheça nossos serviços
+                                    <span aria-hidden="true">→</span>
+                                </a>
+
+                                <a class="button button--outline" href="#contato">
+                                    Fale com nossa equipe
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="hero__slide"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="2 de 4"
+                    aria-hidden="true"
+                    inert
+                >
+                    <img
+                        class="hero__image"
+                        src="imgs/slide-02.png"
+                        alt=""
+                    >
+
+                    <div class="container hero__slide-layout">
+                        <div class="hero__content">
+                            <p class="hero__eyebrow">
+                                Elétrica Naval & Industrial
+                            </p>
+
+                            <h2 class="hero__title">
+                                Apoio em
+                                <span>provas de mar.</span>
+                            </h2>
+
+                            <p class="hero__description">
+                                Suporte técnico especializado em sistemas elétricos
+                                durante provas de mar e DP Trials, assegurando o correto
+                                acompanhamento dos testes, a confiabilidade dos sistemas
+                                e o pleno atendimento às necessidades operacionais
+                                da embarcação.
+                            </p>
+
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="#servicos">
+                                    Conheça nossos serviços
+                                    <span aria-hidden="true">→</span>
+                                </a>
+
+                                <a class="button button--outline" href="#contato">
+                                    Fale com nossa equipe
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="hero__slide"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="3 de 4"
+                    aria-hidden="true"
+                    inert
+                >
+                    <img
+                        class="hero__image"
+                        src="imgs/slide-02.png"
+                        alt=""
+                    >
+
+                    <div class="container hero__slide-layout">
+                        <div class="hero__content">
+                            <p class="hero__eyebrow">
+                                Elétrica Naval & Industrial
+                            </p>
+
+                            <h2 class="hero__title">
+                                Manutenção
+                                <span>preventiva e corretiva.</span>
+                            </h2>
+
+                            <p class="hero__description">
+                                Ações técnicas para evitar falhas e corrigir
+                                defeitos em sistemas elétricos e industriais.
+                            </p>
+
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="#servicos">
+                                    Conheça nossos serviços
+                                    <span aria-hidden="true">→</span>
+                                </a>
+
+                                <a class="button button--outline" href="#contato">
+                                    Fale com nossa equipe
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="hero__slide"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="4 de 4"
+                    aria-hidden="true"
+                    inert
+                >
+                    <img
+                        class="hero__image"
+                        src="imgs/slide-02.png"
+                        alt=""
+                    >
+
+                    <div class="container hero__slide-layout">
+                        <div class="hero__content">
+                            <p class="hero__eyebrow">
+                                Elétrica Naval & Industrial
+                            </p>
+
+                            <h2 class="hero__title">
+                                Inspeções, testes
+                                <span>e parametrizações.</span>
+                            </h2>
+
+                            <p class="hero__description">
+                                Verificações técnicas que garantem desempenho,
+                                segurança e ajustes precisos em sistemas
+                                elétricos e industriais.
+                            </p>
+
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="#servicos">
+                                    Conheça nossos serviços
+                                    <span aria-hidden="true">→</span>
+                                </a>
+
+                                <a class="button button--outline" href="#contato">
+                                    Fale com nossa equipe
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+>
+
+
+            <p class="sr-only" data-slide-status aria-live="polite" aria-atomic="true"></p>
+        </section>
+    </main>
+
+    <section class="about" id="sobre" aria-labelledby="about-title">
+    <div class="container about__layout">
+        <div class="about__content">
+            <p class="about__eyebrow">Sobre nós</p>
+
+            <h2 class="about__title" id="about-title">
+                Somos a Eletrotécnica Marinelli.
+            </h2>
+
+            <div class="about__text">
+                <p>
+                    Há mais de 20 anos entregamos soluções completas em
+                    elétrica offshore, com expertise em reparos e serviços
+                    elétricos para rebocadores e navios. Atuamos com alto
+                    padrão técnico, agilidade e compromisso com a segurança,
+                    ajudando nossos clientes a manter suas operações
+                    confiáveis e eficientes.
+                </p>
+
+                <p>
+                    Nossa experiência e seriedade nos tornaram parceiros
+                    de confiança de estaleiros e empresas de navegação
+                    em todo o Brasil.
+                </p>
+
+                <p>
+                    Somos movidos pela paixão por entregar serviços de
+                    alto nível, e essa dedicação é alimentada por uma
+                    equipe de profissionais altamente qualificados e
+                    certificados pelo Conselho Federal dos Técnicos
+                    Industriais (CFT).
+                </p>
+
+                <p>
+                    Cada membro da nossa equipe traz consigo experiência
+                    e motivação para oferecer soluções personalizadas,
+                    seguras e eficientes, sempre alinhadas aos mais
+                    rigorosos padrões de qualidade e às necessidades
+                    específicas de cada embarcação.
+                </p>
+
+                <p>
+                    Na Eletrotécnica Marinelli, não apenas atendemos,
+                    mas superamos expectativas, com o compromisso de
+                    manter sua operação sempre no rumo certo.
+                </p>
+            </div>
+
+            <a class="button button--primary about__cta" href="#contato">
+                Fale com nossa equipe
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        <ul class="about__highlights" aria-label="Nossos diferenciais">
+            <li class="about__highlight">
+                <svg
+                    class="about__icon"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <circle cx="16" cy="16" r="12"></circle>
+                    <path d="M16 8v8l5 3"></path>
+                    <path d="M16 4v2M28 16h-2M16 28v-2M4 16h2"></path>
+                </svg>
+
+                <div>
+                    <h3>20+ anos</h3>
+                    <p>Experiência em soluções elétricas offshore.</p>
+                </div>
+            </li>
+
+            <li class="about__highlight">
+                <svg
+                    class="about__icon"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M26 13c0 8-10 15-10 15S6 21 6 13a10 10 0 1 1 20 0Z"></path>
+                    <circle cx="16" cy="13" r="3.5"></circle>
+                </svg>
+
+                <div>
+                    <h3>Todo o Brasil</h3>
+                    <p>Parceria com estaleiros e empresas de navegação.</p>
+                </div>
+            </li>
+
+            <li class="about__highlight">
+                <svg
+                    class="about__icon"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M7 16V9h18v7M12 9V5h8v4"></path>
+                    <path d="m4 18 12-4 12 4-4 8H8l-4-8Z"></path>
+                    <path d="M16 14v12M3 28q3-3 6 0t6 0 6 0 6 0"></path>
+                </svg>
+
+                <div>
+                    <h3>Rebocadores e navios</h3>
+                    <p>Soluções técnicas para cada embarcação.</p>
+                </div>
+            </li>
+
+            <li class="about__highlight">
+                <svg
+                    class="about__icon"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="m16 3 11 4v8c0 7-11 14-11 14S5 22 5 15V7l11-4Z"></path>
+                    <path d="m11 15 3.5 3.5L22 11"></path>
+                </svg>
+
+                <div>
+                    <h3>Equipe certificada</h3>
+                    <p>Profissionais qualificados e certificados pelo CFT.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="about__visual">
+            <img
+                class="about__image"
+                src="imgs/slide-03.png"
+                alt="Rebocador navegando no mar"
+                loading="lazy"
+                decoding="async"
+            >
+        </div>
+    </div>
+</section>
+
+<section class="services" id="servicos" aria-labelledby="services-title">
+    <div class="container">
+        <div class="services__header">
+            <div>
+                <p class="services__eyebrow">Nossos serviços</p>
+
+                <h2 class="services__title" id="services-title">
+                Excelência, agilidade e segurança em cada serviço, entregando confiança e resultados consistentes aos nossos clientes.
+                </h2>
+            </div>
+        </div>
+
+        <div class="services__grid">
+            <article class="service-card" id="manutencao">
+                <div class="service-card__media">
+                    <img
+                        src="imgs/servico01.png"
+                        alt="Profissional realizando manutenção em painel elétrico"
+                        loading="lazy"
+                        decoding="async"
+                        width="480"
+                        height="360"
+                    >
+                </div>
+
+                <div class="service-card__body">
+                    <div class="service-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <path d="M19 5a8 8 0 0 0-9 10L4 21a4 4 0 0 0 6 6l6-6a8 8 0 0 0 10-9l-5 5-6-6 4-6Z"></path>
+                            <path d="m7 24 1-1"></path>
+                        </svg>
+                    </div>
+
+                    <span class="service-card__number" aria-hidden="true">01</span>
+
+                    <h3 class="service-card__title">
+                        Manutenção Preventiva e Corretiva
+                    </h3>
+
+                    <p class="service-card__description">
+                        Prevenção de falhas e correção de defeitos
+                        em sistemas elétricos.
+                    </p>
+
+                    <a
+                        class="service-card__link"
+                        href="#contato"
+                        aria-label="Saiba mais sobre Manutenção Preventiva e Corretiva"
+                    >
+                        Saiba mais
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="inspecoes">
+                <div class="service-card__media">
+                    <img
+                        src="imgs/servico01.png"
+                        alt="Inspeção técnica de equipamentos elétricos"
+                        loading="lazy"
+                        decoding="async"
+                        width="480"
+                        height="360"
+                    >
+                </div>
+
+                <div class="service-card__body">
+                    <div class="service-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <rect x="7" y="6" width="18" height="23" rx="2"></rect>
+                            <rect x="12" y="3" width="8" height="6" rx="2"></rect>
+                            <path d="m11 18 3 3 7-7M11 25h10"></path>
+                        </svg>
+                    </div>
+
+                    <span class="service-card__number" aria-hidden="true">02</span>
+
+                    <h3 class="service-card__title">
+                        Inspeções, Testes e Parametrizações
+                    </h3>
+
+                    <p class="service-card__description">
+                        Verificações e ajustes para garantir
+                        segurança e desempenho dos equipamentos.
+                    </p>
+
+                    <a
+                        class="service-card__link"
+                        href="#contato"
+                        aria-label="Saiba mais sobre Inspeções, Testes e Parametrizações"
+                    >
+                        Saiba mais
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="instalacao-retrofit">
+                <div class="service-card__media">
+                    <img
+                        src="imgs/servico01.png"
+                        alt="Sistemas e componentes de um painel elétrico"
+                        loading="lazy"
+                        decoding="async"
+                        width="480"
+                        height="360"
+                    >
+                </div>
+
+                <div class="service-card__body">
+                    <div class="service-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <path d="M26 13a10 10 0 0 0-17-5l-4 4"></path>
+                            <path d="M5 5v7h7"></path>
+                            <path d="M6 19a10 10 0 0 0 17 5l4-4"></path>
+                            <path d="M20 20h7v7"></path>
+                        </svg>
+                    </div>
+
+                    <span class="service-card__number" aria-hidden="true">03</span>
+
+                    <h3 class="service-card__title">
+                        Instalação de Sistemas e Equipamentos e Retrofit
+                    </h3>
+
+                    <p class="service-card__description">
+                        Instalação e modernização de sistemas
+                        para atender às necessidades da operação.
+                    </p>
+
+                    <a
+                        class="service-card__link"
+                        href="#contato"
+                        aria-label="Saiba mais sobre Instalação de Sistemas e Equipamentos e Retrofit"
+                    >
+                        Saiba mais
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="paineis-eletricos">
+                <div class="service-card__media">
+                    <img
+                        src="imgs/servico01.png"
+                        alt="Componentes organizados em um painel elétrico"
+                        loading="lazy"
+                        decoding="async"
+                        width="480"
+                        height="360"
+                    >
+                </div>
+
+                <div class="service-card__body">
+                    <div class="service-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <rect x="5" y="4" width="22" height="24" rx="2"></rect>
+                            <path d="M16 4v24M9 9h3M20 9h3M9 14h3M20 14h3M9 19h3M20 19h3M9 24h3M20 24h3"></path>
+                        </svg>
+                    </div>
+
+                    <span class="service-card__number" aria-hidden="true">04</span>
+
+                    <h3 class="service-card__title">
+                        Montagem de Painéis Elétricos
+                    </h3>
+
+                    <p class="service-card__description">
+                        Montagem de painéis com suporte técnico
+                        especializado e confiabilidade.
+                    </p>
+
+                    <a
+                        class="service-card__link"
+                        href="#contato"
+                        aria-label="Saiba mais sobre Montagem de Painéis Elétricos"
+                    >
+                        Saiba mais
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="provas-de-mar">
+                <div class="service-card__media">
+                    <img
+                        src="imgs/servico01.png"
+                        alt="Rebocador navegando no mar"
+                        loading="lazy"
+                        decoding="async"
+                        width="480"
+                        height="360"
+                    >
+                </div>
+
+                <div class="service-card__body">
+                    <div class="service-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <path d="M4 9q3-4 6 0t6 0 6 0 6 0"></path>
+                            <path d="M4 16q3-4 6 0t6 0 6 0 6 0"></path>
+                            <path d="M4 23q3-4 6 0t6 0 6 0 6 0"></path>
+                        </svg>
+                    </div>
+
+                    <span class="service-card__number" aria-hidden="true">05</span>
+
+                    <h3 class="service-card__title">
+                        Apoio em Provas de Mar
+                    </h3>
+
+                    <p class="service-card__description">
+                        Acompanhamento técnico de sistemas
+                        elétricos em provas de mar e DP Trials.
+                    </p>
+
+                    <a
+                        class="service-card__link"
+                        href="#contato"
+                        aria-label="Saiba mais sobre Apoio em Provas de Mar"
+                    >
+                        Saiba mais
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+</body>
+</html>
