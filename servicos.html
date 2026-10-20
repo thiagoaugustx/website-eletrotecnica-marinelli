@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eletro Marinelli</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="./js/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header" id="header">
+    <nav class="navbar container" aria-label="Navegação principal">
+        <a class="navbar__brand" href="#inicio" aria-label="Página inicial">
+            <img
+                src="imgs/logo-branca.png"
+                alt="Eletro Marinelli — Elétrica Naval & Industrial"
+            >
+        </a>
+
+        <button
+            class="navbar__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar__menu" id="navbar-menu">
+            <ul class="navbar__links">
+                <li>
+                    <a class="navbar__link" href="#inicio">
+                        Início
+                    </a>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-qualidade"
+                    >
+                        Qualidade
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-qualidade"
+                        hidden
+                    >
+                        <li>
+                            <a href="#politica-sgq">Política de SGQ</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-servicos"
+                    >
+                        Serviços
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-servicos"
+                        hidden
+                    >
+                        <li>
+                            <a href="#manutencao">
+                                Manutenção Preventiva e Corretiva
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#inspecoes">
+                                Inspeções, Testes e Parametrizações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#instalacao-retrofit">
+                                Instalação de sistemas e equipamentos e Retrofit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#paineis-eletricos">
+                                Montagem de painéis elétricos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#provas-de-mar">
+                                Apoio em provas de mar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#trabalhe-conosco">
+                        Trabalhe Conosco
+                    </a>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#contato">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+
+            <a class="button button--primary navbar__cta" href="#contato">
+                Solicitar Orçamento
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<section class="banner" aria-labelledby="banner-title">
+    <div class="banner__photo" aria-hidden="true"></div>
+
+    <div class="container banner__inner">
+      <p class="eyebrow eyebrow--blue">Qualidade, Dedicação e Profissionalismo</p>
+
+      <h1 id="banner-title">
+        Nossos <span>Serviços</span>
+      </h1>
+
+      <p class="banner__description">
+        Qualidade dos serviços e compromisso com o prazo de entrega.
+      </p>
+    </div>
+  </section>
+
+<section
+  class="bloco-solucoes"
+  aria-labelledby="bloco-solucoes-titulo"
+>
+  <div class="bloco-solucoes__container">
+
+    <nav
+      class="bloco-solucoes__breadcrumb"
+      aria-label="Você está aqui"
+    >
+      <a href="/">Início</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">Serviços</span>
+    </nav>
+
+    <!--<header class="bloco-solucoes__header">
+      <p class="bloco-solucoes__etiqueta">
+        Qualidade, dedicação e profissionalismo
+      </p>
+
+      <h2 id="bloco-solucoes-titulo">Nossos serviços</h2>
+
+      <p class="bloco-solucoes__descricao">
+        Executamos manutenção, inspeções, testes, parametrizações e
+        instalações de sistemas elétricos, garantindo a confiabilidade
+        e o desempenho dos sistemas a bordo e em ambiente industrial.
+      </p>
+    </header> -->
+
+    <div class="bloco-solucoes__lista">
+
+      <!-- SERVIÇO 1 -->
+      <a
+        class="bloco-solucoes__card"
+        href="/servicos/manutencao-preventiva-e-corretiva/"
+      >
+        <img
+          class="bloco-solucoes__imagem"
+          src="imgs/serivcos-img/manutencao.png"
+          alt=""
+          width="220"
+          height="124"
+          loading="lazy"
+        >
+
+        <span class="bloco-solucoes__icone" aria-hidden="true">
+            <i data-lucide="settings"></i>
+        </span>
+
+        <div class="bloco-solucoes__texto">
+          <h3>Manutenção Preventiva e Corretiva</h3>
+          <p>
+            Execução de manutenções preventivas e corretivas em sistemas
+            elétricos, garantindo confiabilidade, segurança e
+            continuidade operacional.
+          </p>
+        </div>
+
+        <span class="bloco-solucoes__seta" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- SERVIÇO 2 -->
+      <a
+        class="bloco-solucoes__card"
+        href="/servicos/inspecoes-testes-e-parametrizacoes/"
+      >
+        <img
+          class="bloco-solucoes__imagem"
+          src="imgs/serivcos-img/inspecoes.png"
+          alt=""
+          width="220"
+          height="124"
+          loading="lazy"
+        >
+
+        <span class="bloco-solucoes__icone" aria-hidden="true">
+            <i data-lucide="clipboard-check"></i>
+        </span>
+
+        <div class="bloco-solucoes__texto">
+          <h3>Inspeções, Testes e Parametrizações</h3>
+          <p>
+            Realização de inspeções técnicas, testes funcionais e
+            parametrizações para assegurar o pleno funcionamento
+            dos sistemas elétricos, conforme normas técnicas.
+          </p>
+        </div>
+
+        <span class="bloco-solucoes__seta" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- SERVIÇO 3 -->
+      <a
+        class="bloco-solucoes__card"
+        href="/servicos/instalacoes-e-retrofit/"
+      >
+        <img
+          class="bloco-solucoes__imagem"
+          src="imgs/serivcos-img/instalacoes.png"
+          alt=""
+          width="220"
+          height="124"
+          loading="lazy"
+        >
+
+        <span class="bloco-solucoes__icone" aria-hidden="true">
+            <i data-lucide="wrench"></i>
+        </span>
+
+        <div class="bloco-solucoes__texto">
+          <h3>Instalação de sistemas e equipamentos e Retrofit</h3>
+          <p>
+            Instalação, integração e retrofit de sistemas elétricos e
+            equipamentos, com soluções personalizadas para maior
+            eficiência e desempenho.
+          </p>
+        </div>
+
+        <span class="bloco-solucoes__seta" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- SERVIÇO 4 -->
+      <a
+        class="bloco-solucoes__card"
+        href="imgs/serivcos-img/paineis.png"
+      >
+        <img
+          class="bloco-solucoes__imagem"
+          src="imgs/serivcos-img/paineis.png"
+          alt=""
+          width="220"
+          height="124"
+          loading="lazy"
+        >
+
+        <span class="bloco-solucoes__icone" aria-hidden="true">
+          <i data-lucide="circuit-board"></i>
+        </span>
+
+        <div class="bloco-solucoes__texto">
+          <h3>Montagem de painéis elétricos</h3>
+          <p>
+            Montagem de painéis elétricos de comando, proteção e
+            distribuição, atendendo aos mais altos padrões de
+            qualidade e segurança.
+          </p>
+        </div>
+
+        <span class="bloco-solucoes__seta" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6"/>
+            </svg>
+        </span>
+      </a>
+
+      <!-- SERVIÇO 5 -->
+      <a
+        class="bloco-solucoes__card"
+        href="/servicos/apoio-em-provas-de-mar/"
+      >
+        <img
+          class="bloco-solucoes__imagem"
+          src="imgs/serivcos-img/provas-de-mar.png"
+          alt=""
+          width="220"
+          height="124"
+          loading="lazy"
+        >
+
+        <span class="bloco-solucoes__icone" aria-hidden="true">
+            <i data-lucide="ship"></i>        
+        </span>
+
+        <div class="bloco-solucoes__texto">
+          <h3>Apoio em provas de mar</h3>
+          <p>
+            Suporte técnico em provas de mar, com acompanhamento de
+            sistemas elétricos, ajustes e testes para garantir o
+            desempenho seguro e eficiente das embarcações.
+          </p>
+        </div>
+
+        <span class="bloco-solucoes__seta" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__container footer__main">
+        <div class="footer__brand">
+            <a class="footer__logo" href="#inicio" aria-label="Eletro Marinelli — Início">
+                <img
+                    src="imgs/logo-branca.png"
+                    alt="Eletro Marinelli — Elétrica naval e industrial"
+                    loading="lazy"
+                >
+            </a>
+        </div>
+
+        <nav class="footer__column" aria-labelledby="footer-institutional">
+            <h2 class="footer__title" id="footer-institutional">
+                Institucional
+            </h2>
+
+            <ul class="footer__links">
+                <li>
+                    <a href="#inicio">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="#sobre">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Sobre nós
+                    </a>
+                </li>
+                <li>
+                    <a href="#qualidade">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Qualidade
+                    </a>
+                </li>
+                <li>
+                    <a href="#trabalhe-conosco">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Trabalhe Conosco
+                    </a>
+                </li>
+                <li>
+                    <a href="#orcamento">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Contato
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="footer__column">
+            <h2 class="footer__title">Contato</h2>
+
+            <address class="footer__contact">
+                <div class="footer__contact-item">
+                    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Telefone</strong>
+                        <a href="tel:+552126201234">(21) 99596-6620</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>E-mail</strong>
+                        <a href="mailto:contato@eletromarinelli.com.br">
+                            contato@eletromarinelli.com.br
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Endereço</strong>
+                        <p>
+                            R. Cavaru, n° 609 - Porto da Pedra, <br>  São Gonçalo - RJ, 24436-400
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    <div>
+                        <strong>Horário de atendimento</strong>
+                        <p>Segunda a sexta, das 7h às 17h</p>
+                    </div>
+                </div>
+            </address>
+        </div>
+
+        <div class="footer__column footer__networks">
+            <h2 class="footer__title">Siga nossas redes</h2>
+
+            <ul class="footer__social">
+                <li>
+                    <a href="https://www.linkedin.com/company/eletrot%C3%A9cnica-marinelli/"
+                       aria-label="LinkedIn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/eletrotecnica_marinelli/"
+                       aria-label="Instagram"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?l=pt&phone=5521995966620"
+                       aria-label="Whatsapp"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="footer__social-text">
+                Acompanhe nossos conteúdos.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <div class="footer__container footer__bottom-content">
+            <p>
+                © 2026 Eletrotécnica Marinelli.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Desenvolvido por <strong><a href="">THIAGO AUGUSTO - DESENVOLVIMENTO WEB</strong></a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+</body>

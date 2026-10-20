@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eletro Marinelli</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header" id="header">
+    <nav class="navbar container" aria-label="Navegação principal">
+        <a class="navbar__brand" href="#inicio" aria-label="Página inicial">
+            <img
+                src="imgs/logo-branca.png"
+                alt="Eletro Marinelli — Elétrica Naval & Industrial"
+            >
+        </a>
+
+        <button
+            class="navbar__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar__menu" id="navbar-menu">
+            <ul class="navbar__links">
+                <li>
+                    <a class="navbar__link" href="#inicio">
+                        Início
+                    </a>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-qualidade"
+                    >
+                        Qualidade
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-qualidade"
+                        hidden
+                    >
+                        <li>
+                            <a href="#politica-sgq">Política de SGQ</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-servicos"
+                    >
+                        Serviços
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-servicos"
+                        hidden
+                    >
+                        <li>
+                            <a href="#manutencao">
+                                Manutenção Preventiva e Corretiva
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#inspecoes">
+                                Inspeções, Testes e Parametrizações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#instalacao-retrofit">
+                                Instalação de sistemas e equipamentos e Retrofit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#paineis-eletricos">
+                                Montagem de painéis elétricos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#provas-de-mar">
+                                Apoio em provas de mar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#trabalhe-conosco">
+                        Trabalhe Conosco
+                    </a>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="#contato">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+
+            <a class="button button--primary navbar__cta" href="#contato">
+                Solicitar Orçamento
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<section class="banner" aria-labelledby="banner-title">
+    <div class="banner__photo" aria-hidden="true"></div>
+
+    <div class="container banner__inner">
+      <p class="eyebrow eyebrow--yellow">Qualidade</p>
+
+      <h1 id="banner-title">
+        Política do <span>SGQ</span>
+      </h1>
+
+      <p class="banner__description">
+        Nosso compromisso com a qualidade orienta todas as
+        <br class="desktop-break">
+        nossas atividades, garantindo segurança, eficiência
+        <br class="desktop-break">
+        e confiabilidade em cada projeto.
+      </p>
+    </div>
+  </section>
+
+  <main>
+    <section class="conteudo" aria-labelledby="content-title">
+      <div class="container">
+
+        <nav class="breadcrumb" aria-label="Você está aqui">
+          <a href="https://eletrotecnicamarinelli.com/">Início</a>
+          <span aria-hidden="true">›</span>
+
+          <a href="/qualidade/">Qualidade</a>
+          <span aria-hidden="true">›</span>
+
+          <span aria-current="page">Política do SGQ</span>
+        </nav>
+
+        <header class="conteudo__header">
+          <p class="eyebrow">Qualidade</p>
+
+          <h2 id="content-title">Política do SGQ</h2>
+
+          <p class="conteudo__description">
+            A empresa compromete-se a atender plenamente aos requisitos dos clientes, legais e normativos aplicáveis, executando suas atividades com planejamento, rastreabilidade e controle técnico, em conformidade com as normas vigentes, boas práticas de engenharia e os princípios da qualidade total.
+
+          </p>
+
+          <a class="back-button" href="https://eletrotecnicamarinelli.com/">
+            <span aria-hidden="true">←</span>
+            Voltar
+          </a>
+        </header>
+
+        <!--
+          Para carregar o documento oficial, configure:
+          data-pdf="assets/politica-sgq.pdf"
+        -->
+        <div class="document-viewer" data-pdf="assets/qualidade-1780057716-6a19867417046.pdf">
+
+          <!-- Prévia exibida enquanto nenhum PDF estiver configurado -->
+          <div class="document-demo">
+            <div
+              class="document-toolbar"
+              role="group"
+              aria-label="Controles da prévia ilustrativa"
+            >
+              <span class="document-icon" aria-hidden="true">▤</span>
+              <span class="toolbar-title">Política do SGQ</span>
+
+              <div class="zoom-controls">
+                <button
+                  type="button"
+                  data-zoom="out"
+                  aria-label="Diminuir zoom"
+                >
+                  −
+                </button>
+
+                <output id="zoom-value" aria-live="polite">100%</output>
+
+                <button
+                  type="button"
+                  data-zoom="in"
+                  aria-label="Aumentar zoom"
+                >
+                  +
+                </button>
+              </div>
+
+              <span class="toolbar-label">Prévia</span>
+            </div>
+
+            <div
+              class="document-scroll"
+              tabindex="0"
+              aria-label="Prévia ilustrativa do documento"
+            >
+              <article class="document-sheet">
+                <p class="document-notice">PRÉVIA ILUSTRATIVA</p>
+
+                <h3>
+                  POLÍTICA DO SISTEMA DE GESTÃO DA QUALIDADE
+                </h3>
+
+                <p>
+                  A empresa compromete-se a atender plenamente aos
+                  requisitos dos clientes, legais e normativos aplicáveis,
+                  executando suas atividades com planejamento,
+                  rastreabilidade e controle técnico.
+                </p>
+
+                <ol>
+                  <li>
+                    <strong>Qualidade e confiabilidade:</strong>
+                    executar as atividades em conformidade com as normas
+                    vigentes e as boas práticas de engenharia.
+                  </li>
+
+                  <li>
+                    <strong>
+                      Desenvolvimento e valorização das pessoas:
+                    </strong>
+                    garantir que nossos colaboradores atuem com
+                    competência, segurança e compromisso, por meio de
+                    capacitação contínua e de um ambiente de trabalho
+                    pautado no respeito e no desenvolvimento.
+                  </li>
+
+                  <li>
+                    <strong>
+                      Confiabilidade técnica e segurança operacional:
+                    </strong>
+                    assegurar que todos os serviços e ensaios sejam
+                    realizados de forma segura, com uso de equipamentos
+                    calibrados e padrões rastreáveis, garantindo
+                    resultados confiáveis e conformes.
+                  </li>
+
+                  <li>
+                    <strong>
+                      Melhoria contínua e eficiência dos processos:
+                    </strong>
+                    monitorar o desempenho do SGQ e promover ações
+                    sistemáticas de melhoria.
+                  </li>
+                </ol>
+
+                <p>
+                  Esta área demonstra apenas a apresentação visual do
+                  documento. Configure o arquivo PDF oficial para
+                  disponibilizar a versão completa e aprovada da política.
+                </p>
+
+                <p class="document-signature">
+                  <strong>Política da Qualidade</strong>
+                  <br>
+                  Sistema de Gestão da Qualidade
+                </p>
+
+                <footer>
+                  Cópia ilustrativa — sem validade documental.
+                </footer>
+              </article>
+            </div>
+          </div>
+
+          <!-- Visualizador do PDF oficial -->
+          <iframe
+            class="document-frame"
+            title="PDF oficial — Política do SGQ"
+            hidden
+          ></iframe>
+        </div>
+
+        <p class="viewer-note">
+          Prévia ilustrativa. O documento oficial deve ser configurado
+          no HTML.
+        </p>
+
+        <a
+          class="pdf-link"
+          target="_blank"
+          rel="noopener"
+          hidden
+        >
+          Abrir PDF em uma nova aba ↗
+        </a>
+      </div>
+    </section>
+  </main>
+
+
+
+<footer class="footer">
+    <div class="footer__container footer__main">
+        <div class="footer__brand">
+            <a class="footer__logo" href="#inicio" aria-label="Eletro Marinelli — Início">
+                <img
+                    src="imgs/logo-branca.png"
+                    alt="Eletro Marinelli — Elétrica naval e industrial"
+                    loading="lazy"
+                >
+            </a>
+        </div>
+
+        <nav class="footer__column" aria-labelledby="footer-institutional">
+            <h2 class="footer__title" id="footer-institutional">
+                Institucional
+            </h2>
+
+            <ul class="footer__links">
+                <li>
+                    <a href="#inicio">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="#sobre">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Sobre nós
+                    </a>
+                </li>
+                <li>
+                    <a href="#qualidade">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Qualidade
+                    </a>
+                </li>
+                <li>
+                    <a href="#trabalhe-conosco">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Trabalhe Conosco
+                    </a>
+                </li>
+                <li>
+                    <a href="#orcamento">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Contato
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="footer__column">
+            <h2 class="footer__title">Contato</h2>
+
+            <address class="footer__contact">
+                <div class="footer__contact-item">
+                    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Telefone</strong>
+                        <a href="tel:+552126201234">(21) 99596-6620</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>E-mail</strong>
+                        <a href="mailto:contato@eletromarinelli.com.br">
+                            contato@eletromarinelli.com.br
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Endereço</strong>
+                        <p>
+                            R. Cavaru, n° 609 - Porto da Pedra, <br>  São Gonçalo - RJ, 24436-400
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    <div>
+                        <strong>Horário de atendimento</strong>
+                        <p>Segunda a sexta, das 7h às 17h</p>
+                    </div>
+                </div>
+            </address>
+        </div>
+
+        <div class="footer__column footer__networks">
+            <h2 class="footer__title">Siga nossas redes</h2>
+
+            <ul class="footer__social">
+                <li>
+                    <a href="https://www.linkedin.com/company/eletrot%C3%A9cnica-marinelli/"
+                       aria-label="LinkedIn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/eletrotecnica_marinelli/"
+                       aria-label="Instagram"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?l=pt&phone=5521995966620"
+                       aria-label="Whatsapp"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="footer__social-text">
+                Acompanhe nossos conteúdos.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <div class="footer__container footer__bottom-content">
+            <p>
+                © 2026 Eletrotécnica Marinelli.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Desenvolvido por <strong><a href="">THIAGO AUGUSTO - DESENVOLVIMENTO WEB</strong></a>
+            </p>
+        </div>
+    </div>
+</footer>
