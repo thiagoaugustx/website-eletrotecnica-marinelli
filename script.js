@@ -724,3 +724,173 @@ document.querySelectorAll(".servicos").forEach((section) => {
 })();
 
 lucide.createIcons();
+
+(() => {
+    const gallery = document.querySelector(".field-gallery");
+    const modal = document.querySelector("#gallery-modal");
+
+    if (!gallery || !modal) return;
+
+    const openButton = gallery.querySelector("[data-open-gallery]");
+    const closeButton = modal.querySelector(".gallery-modal__close");
+    const previousButton = modal.querySelector("[data-gallery-previous]");
+    const nextButton = modal.querySelector("[data-gallery-next]");
+    const mainImage = modal.querySelector(".gallery-modal__image");
+    const caption = modal.querySelector(".gallery-modal__caption");
+    const thumbnails = modal.querySelector(".gallery-modal__thumbnails");
+    const imageLinks = [...gallery.querySelectorAll(".field-gallery__grid a")];
+
+    const extraImages = [
+        // { src: "imgs/registro-5.jpg", alt: "Descrição da imagem" }
+    ];
+
+    const images = [
+        ...imageLinks.map((link) => ({
+            src: link.getAttribute("href"),
+            alt: link.querySelector("img")?.alt || ""
+        })),
+        ...extraImages
+    ];
+
+    let currentIndex = 0;
+    let previousFocus = null;
+    let previousOverflow = "";
+    let startedOnBackdrop = false;
+
+    function showImage(index) {
+        if (!images.length) return;
+
+        currentIndex = (index + images.length) % images.length;
+
+        const image = images[currentIndex];
+
+        mainImage.src = image.src;
+        mainImage.alt = image.alt;
+
+        caption.textContent =
+            `${currentIndex + 1} / ${images.length}` +
+            (image.alt ? ` — ${image.alt}` : "");
+
+        [...thumbnails.children].forEach((button, buttonIndex) => {
+            button.setAttribute(
+                "aria-pressed",
+                String(buttonIndex === currentIndex)
+            );
+        });
+
+        const activeThumbnail = thumbnails.children[currentIndex];
+
+        if (activeThumbnail) {
+            const stripBounds = thumbnails.getBoundingClientRect();
+            const thumbnailBounds = activeThumbnail.getBoundingClientRect();
+
+            if (thumbnailBounds.left < stripBounds.left) {
+                thumbnails.scrollLeft -= stripBounds.left - thumbnailBounds.left;
+            } else if (thumbnailBounds.right > stripBounds.right) {
+                thumbnails.scrollLeft += thumbnailBounds.right - stripBounds.right;
+            }
+        }
+    }
+
+    function openGallery(index = 0) {
+        if (!images.length || modal.open) return;
+
+        previousFocus = document.activeElement;
+        previousOverflow = document.documentElement.style.overflow;
+
+        modal.showModal();
+        document.documentElement.style.overflow = "hidden";
+
+        showImage(index);
+    }
+
+    thumbnails.replaceChildren();
+
+    images.forEach((image, index) => {
+        const button = document.createElement("button");
+        const thumbnail = document.createElement("img");
+
+        button.type = "button";
+        button.className = "gallery-modal__thumbnail";
+        button.setAttribute("aria-label", `Ver imagem ${index + 1}`);
+        button.setAttribute("aria-pressed", "false");
+
+        thumbnail.src = image.src;
+        thumbnail.alt = "";
+        thumbnail.loading = "lazy";
+
+        button.append(thumbnail);
+        button.addEventListener("click", () => showImage(index));
+
+        thumbnails.append(button);
+    });
+
+    previousButton.disabled = images.length < 2;
+    nextButton.disabled = images.length < 2;
+    openButton.disabled = images.length === 0;
+
+    openButton.addEventListener("click", () => openGallery());
+
+    imageLinks.forEach((link, index) => {
+        link.addEventListener("click", (event) => {
+            if (
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+            openGallery(index);
+        });
+    });
+
+    closeButton.addEventListener("click", () => {
+        modal.close();
+    });
+
+    previousButton.addEventListener("click", () => {
+        showImage(currentIndex - 1);
+    });
+
+    nextButton.addEventListener("click", () => {
+        showImage(currentIndex + 1);
+    });
+
+    modal.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            showImage(currentIndex - 1);
+        } else if (event.key === "ArrowRight") {
+            event.preventDefault();
+            showImage(currentIndex + 1);
+        }
+    });
+
+    modal.addEventListener("pointerdown", (event) => {
+        startedOnBackdrop = event.target === modal;
+    });
+
+    modal.addEventListener("pointercancel", () => {
+        startedOnBackdrop = false;
+    });
+
+    modal.addEventListener("click", (event) => {
+        if (startedOnBackdrop && event.target === modal) {
+            modal.close();
+        }
+
+        startedOnBackdrop = false;
+    });
+
+    modal.addEventListener("close", () => {
+        document.documentElement.style.overflow = previousOverflow;
+        startedOnBackdrop = false;
+
+        if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+            previousFocus.focus({ preventScroll: true });
+        }
+    });
+})();
