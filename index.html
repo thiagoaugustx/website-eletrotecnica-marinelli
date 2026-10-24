@@ -6,6 +6,8 @@
 
     <title>Eletro Marinelli</title>
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="./js/script.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -328,7 +330,7 @@
         </section>
     </main>
 
-    <section class="about" id="sobre" aria-labelledby="about-title">
+<section class="about" id="sobre" aria-labelledby="about-title">
     <div class="container about__layout">
         <div class="about__content">
             <p class="about__eyebrow">Sobre nós</p>
@@ -338,14 +340,23 @@
             </h2>
 
             <div class="about__text">
-<p>
-                    Há mais de 20 anos, a Eletrotécnica Marinelli oferece soluções em elétrica offshore, com expertise em reparos e serviços elétricos para rebocadores e navios. Com alto padrão técnico, agilidade e compromisso com a segurança, atende estaleiros e empresas de navegação em todo o Brasil.
+                <p>
+                    Há mais de 20 anos, a Eletrotécnica Marinelli oferece
+                    soluções em elétrica offshore, com expertise em reparos
+                    e serviços elétricos para rebocadores e navios. Com alto
+                    padrão técnico, agilidade e compromisso com a segurança,
+                    atende estaleiros e empresas de navegação em todo o Brasil.
                 </p>
 
                 <p>
-                    Sua equipe de profissionais qualificados e certificados pelo Conselho Federal dos Técnicos Industriais (CFT) desenvolve soluções personalizadas, seguras e eficientes, alinhadas aos mais rigorosos padrões de qualidade e às necessidades de cada embarcação, garantindo operações confiáveis e eficientes.                
+                    Sua equipe de profissionais qualificados e certificados
+                    pelo Conselho Federal dos Técnicos Industriais (CFT)
+                    desenvolve soluções personalizadas, seguras e eficientes,
+                    alinhadas aos mais rigorosos padrões de qualidade e às
+                    necessidades de cada embarcação, garantindo operações
+                    confiáveis e eficientes.
                 </p>
-                </div>
+            </div>
 
             <a class="button button--primary about__cta" href="#contato">
                 Fale com nossa equipe
@@ -353,106 +364,71 @@
             </a>
         </div>
 
-        <ul class="about__highlights" aria-label="Nossos diferenciais">
-            <li class="about__highlight">
-                <svg
-                    class="about__icon"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
+        <div class="about__showcase">
+            <div class="about__visual">
+                <img
+                    class="about__image"
+                    src="imgs/slide-03.png"
+                    alt="Rebocador navegando no mar"
+                    loading="lazy"
+                    decoding="async"
                 >
-                    <circle cx="16" cy="16" r="12"></circle>
-                    <path d="M16 8v8l5 3"></path>
-                    <path d="M16 4v2M28 16h-2M16 28v-2M4 16h2"></path>
-                </svg>
+            </div>
 
-                <div>
-                    <h3>20+ anos</h3>
-                    <p>Experiência em soluções elétricas offshore.</p>
-                </div>
-            </li>
+            <ul class="about__highlights" aria-label="Nossos diferenciais">
+                <li class="about__highlight">
+                    <svg class="about__icon" viewBox="0 0 32 32" aria-hidden="true">
+                        <circle cx="16" cy="16" r="12"></circle>
+                        <path d="M16 8v8l5 3"></path>
+                        <path d="M16 4v2M28 16h-2M16 28v-2M4 16h2"></path>
+                    </svg>
 
-            <li class="about__highlight">
-                <svg
-                    class="about__icon"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="M26 13c0 8-10 15-10 15S6 21 6 13a10 10 0 1 1 20 0Z"></path>
-                    <circle cx="16" cy="13" r="3.5"></circle>
-                </svg>
+                    <div>
+                        <h3>20+ anos</h3>
+                        <p>Experiência em soluções elétricas offshore.</p>
+                    </div>
+                </li>
 
-                <div>
-                    <h3>Todo o Brasil</h3>
-                    <p>Parceria com estaleiros e empresas de navegação.</p>
-                </div>
-            </li>
+                <li class="about__highlight">
+                    <svg class="about__icon" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M26 13c0 8-10 15-10 15S6 21 6 13a10 10 0 1 1 20 0Z"></path>
+                        <circle cx="16" cy="13" r="3.5"></circle>
+                    </svg>
 
-            <li class="about__highlight">
-                <svg
-                    class="about__icon"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="M7 16V9h18v7M12 9V5h8v4"></path>
-                    <path d="m4 18 12-4 12 4-4 8H8l-4-8Z"></path>
-                    <path d="M16 14v12M3 28q3-3 6 0t6 0 6 0 6 0"></path>
-                </svg>
+                    <div>
+                        <h3>Todo o Brasil</h3>
+                        <p>Parceria com estaleiros e empresas de navegação.</p>
+                    </div>
+                </li>
 
-                <div>
-                    <h3>Rebocadores e navios</h3>
-                    <p>Soluções técnicas para cada embarcação.</p>
-                </div>
-            </li>
+                <li class="about__highlight">
+                    <svg class="about__icon" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M7 16V9h18v7M12 9V5h8v4"></path>
+                        <path d="m4 18 12-4 12 4-4 8H8l-4-8Z"></path>
+                        <path d="M16 14v12M3 28q3-3 6 0t6 0 6 0 6 0"></path>
+                    </svg>
 
-            <li class="about__highlight">
-                <svg
-                    class="about__icon"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="m16 3 11 4v8c0 7-11 14-11 14S5 22 5 15V7l11-4Z"></path>
-                    <path d="m11 15 3.5 3.5L22 11"></path>
-                </svg>
+                    <div>
+                        <h3>Rebocadores e navios</h3>
+                        <p>Soluções técnicas para cada embarcação.</p>
+                    </div>
+                </li>
 
-                <div>
-                    <h3>Equipe certificada</h3>
-                    <p>Profissionais qualificados e certificados pelo CFT.</p>
-                </div>
-            </li>
-        </ul>
+                <li class="about__highlight">
+                    <svg class="about__icon" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="m16 3 11 4v8c0 7-11 14-11 14S5 22 5 15V7l11-4Z"></path>
+                        <path d="m11 15 3.5 3.5L22 11"></path>
+                    </svg>
 
-        <div class="about__visual">
-            <img
-                class="about__image"
-                src="imgs/slide-03.png"
-                alt="Rebocador navegando no mar"
-                loading="lazy"
-                decoding="async"
-            >
+                    <div>
+                        <h3>Equipe certificada</h3>
+                        <p>Profissionais qualificados e certificados pelo CFT.</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
-
 <section class="servicos" aria-labelledby="servicos-titulo">
   <div class="servicos__container">
     <header class="servicos__cabecalho">
@@ -831,35 +807,40 @@
 <section class="values" id="valores" aria-labelledby="values-title">
     <div class="container">
         <header class="values__header">
-            <div>
-                <p class="values__eyebrow">Nossos valores</p>
+            <p class="values__eyebrow">Nossos valores</p>
 
-                <h2 class="values__title" id="values-title">
-                    O que nos move<span>.</span>
-                </h2>
-            </div>
-
+            <h2 class="values__title" id="values-title">
+                O que nos move<span>.</span>
+            </h2>
         </header>
 
         <div class="values__grid">
             <article class="value">
                 <svg class="value__icon" viewBox="0 0 64 64" aria-hidden="true">
-                    <path d="m5 27 8-18 10 5-8 19-10-6Z"></path>
-                    <path d="m59 27-8-18-10 5 8 19 10-6Z"></path>
-                    <path d="m21 17 8-2 9 3 7 10"></path>
-                    <path d="m42 17-9-2-10 9a4 4 0 0 0 5 6l6-5 16 14a4 4 0 0 1-5 6L32 34"></path>
-                    <path d="m43 43-2 5a4 4 0 0 1-6 1l-9-8"></path>
-                    <path d="m35 48-3 4a4 4 0 0 1-5 0L14 39l-2-8"></path>
-                    <path d="m49 32 3 4-3 4M17 35l4-4M22 40l4-4M27 45l4-4"></path>
+                    <circle cx="32" cy="13" r="9"></circle>
+                    <circle cx="12" cy="23" r="6"></circle>
+                    <circle cx="52" cy="23" r="6"></circle>
+
+                    <path d="M17 43v-3a15 15 0 0 1 30 0v3"></path>
+                    <path d="M12 35A10 10 0 0 0 2 45v5h9"></path>
+                    <path d="M52 35a10 10 0 0 1 10 10v5h-9"></path>
+
+                    <path d="m32 35 4.8 9.6 10.6 1.5-7.7 7.5 1.8 10.4L32 59l-9.5 5 1.8-10.4-7.7-7.5 10.6-1.5L32 35Z"
+                          transform="translate(0 -3)">
+                    </path>
                 </svg>
 
-                <h3 class="value__title">Ética e Transparência</h3>
+                <div class="value__content">
+                    <h3 class="value__title">
+                        Satisfação e fidelização do cliente
+                    </h3>
 
-                <p class="value__text">
-                    Atuamos com integridade em todas as nossas relações,
-                    garantindo confiança e credibilidade junto a clientes,
-                    parceiros e colaboradores.
-                </p>
+                    <p class="value__text">
+                        Entendemos as necessidades de cada cliente e
+                        entregamos soluções que fortalecem a confiança
+                        e constroem relações duradouras.
+                    </p>
+                </div>
             </article>
 
             <article class="value">
@@ -867,35 +848,24 @@
                     <circle cx="32" cy="16" r="9"></circle>
                     <circle cx="12" cy="23" r="6"></circle>
                     <circle cx="52" cy="23" r="6"></circle>
+
                     <path d="M17 55V45a15 15 0 0 1 30 0v10H17Z"></path>
                     <path d="M12 36A10 10 0 0 0 2 46v9h10"></path>
                     <path d="M52 36a10 10 0 0 1 10 10v9H52"></path>
                 </svg>
 
-                <h3 class="value__title">Respeito</h3>
+                <div class="value__content">
+                    <h3 class="value__title">
+                        Desenvolvimento e<br class="value__break">
+                        valorização das pessoas
+                    </h3>
 
-                <p class="value__text">
-                    Valorizamos pessoas, relações e compromissos,
-                    cultivando um ambiente de trabalho colaborativo
-                    e profissional.
-                </p>
-            </article>
-
-            <article class="value">
-                <svg class="value__icon" viewBox="0 0 64 64" aria-hidden="true">
-                    <circle cx="32" cy="25" r="19"></circle>
-                    <path d="m24 25 6 6 11-13"></path>
-                    <path d="m18 39-6 19 12-4 6 7 4-17"></path>
-                    <path d="m46 39 6 19-12-4-6 7-3-10"></path>
-                </svg>
-
-                <h3 class="value__title">Qualidade</h3>
-
-                <p class="value__text">
-                    Buscamos a excelência em cada serviço prestado,
-                    com foco na satisfação do cliente e na conformidade
-                    técnica.
-                </p>
+                    <p class="value__text">
+                        Valorizamos nossos colaboradores e incentivamos
+                        o aprendizado, o desenvolvimento profissional
+                        e a colaboração.
+                    </p>
+                </div>
             </article>
 
             <article class="value">
@@ -904,33 +874,18 @@
                     <path d="m22 31 8 8 15-17"></path>
                 </svg>
 
-                <h3 class="value__title">Segurança</h3>
+                <div class="value__content">
+                    <h3 class="value__title">
+                        Confiabilidade técnica e
+                        segurança operacional
+                    </h3>
 
-                <p class="value__text">
-                    A segurança é prioridade em todas as nossas atividades,
-                    em conformidade com as normas regulamentadoras e boas
-                    práticas de engenharia elétrica.
-                </p>
-            </article>
-
-            <article class="value">
-                <svg class="value__icon" viewBox="0 0 64 64" aria-hidden="true">
-                    <path d="M44 10a25 25 0 1 0 11 15"></path>
-                    <path d="M38 19a16 16 0 1 0 9 12"></path>
-                    <circle cx="31" cy="34" r="6"></circle>
-                    <path d="m31 34 20-20"></path>
-                    <path d="m45 13 1-8 7-4v10h9l-6 7-8 1"></path>
-                </svg>
-
-                <h3 class="value__title">
-                    Comprometimento e Responsabilidade
-                </h3>
-
-                <p class="value__text">
-                    Cumprimos prazos, requisitos e expectativas com
-                    seriedade, garantindo resultados confiáveis
-                    e sustentáveis.
-                </p>
+                    <p class="value__text">
+                        Atuamos com rigor técnico e boas práticas de
+                        engenharia para garantir soluções confiáveis
+                        e operações seguras.
+                    </p>
+                </div>
             </article>
 
             <article class="value">
@@ -941,32 +896,18 @@
                     <path d="M8 55V43h12"></path>
                 </svg>
 
-                <h3 class="value__title">Melhoria Contínua</h3>
+                <div class="value__content">
+                    <h3 class="value__title">
+                        Melhoria contínua e
+                        eficiência dos processos
+                    </h3>
 
-                <p class="value__text">
-                    Evoluímos constantemente nossos processos, métodos
-                    e competências, promovendo inovação e eficiência
-                    operacional.
-                </p>
-            </article>
-
-            <article class="value value--featured">
-                <svg class="value__icon" viewBox="0 0 64 64" aria-hidden="true">
-                    <circle cx="32" cy="16" r="9"></circle>
-                    <circle cx="12" cy="23" r="6"></circle>
-                    <circle cx="52" cy="23" r="6"></circle>
-                    <path d="M17 55V45a15 15 0 0 1 30 0v10H17Z"></path>
-                    <path d="M12 36A10 10 0 0 0 2 46v9h10"></path>
-                    <path d="M52 36a10 10 0 0 1 10 10v9H52"></path>
-                </svg>
-
-                <h3 class="value__title">Valorização das Pessoas</h3>
-
-                <p class="value__text">
-                    Reconhecemos que o sucesso da empresa depende do
-                    conhecimento, da dedicação e do comprometimento
-                    de cada colaborador.
-                </p>
+                    <p class="value__text">
+                        Aprimoramos nossos métodos e processos para
+                        aumentar a produtividade, reduzir desperdícios
+                        e entregar melhores resultados.
+                    </p>
+                </div>
             </article>
         </div>
     </div>
@@ -1232,8 +1173,6 @@
         </div>
     </div>
 </section>
-
-
 
 <footer class="footer">
     <div class="footer__container footer__main">
