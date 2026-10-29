@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eletro Marinelli</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="./js/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header" id="header">
+    <nav class="navbar container" aria-label="Navegação principal">
+        <a class="navbar__brand" href="index.html" aria-label="Página inicial">
+            <img
+                src="imgs/logo-branca.png"
+                alt="Eletro Marinelli — Elétrica Naval & Industrial"
+            >
+        </a>
+
+        <button
+            class="navbar__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar__menu" id="navbar-menu">
+            <ul class="navbar__links">
+                <li>
+                    <a class="navbar__link" href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-qualidade"
+                    >
+                        <a href="qualidade.html">Qualidade</a>
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-qualidade"
+                        hidden
+                    >
+                        <li>
+                            <a href="qualidade.html">Política de SGQ</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <a href="servicos.html"><button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-servicos"
+                    >
+                        <a href="servicos.html">Serviços</a>
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button></a>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-servicos"
+                        hidden
+                    >
+                        <li>
+                            <a href="manutencao-preventiva-e-corretiva.html">
+                                Manutenção Preventiva e Corretiva
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="inspecoes-testes-e-parametrizacoes.html">
+                                Inspeções, Testes e Parametrizações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="instalacao-de-sistemas-e-equipamentos-retrofit.html">
+                                Instalação de sistemas e equipamentos e Retrofit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="montagem-de-paineis-eletricos.html">
+                                Montagem de painéis elétricos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="apoios-em-provas-de-mar.html">
+                                Apoio em provas de mar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="trabalhe-conosco.html">
+                        Trabalhe Conosco
+                    </a>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="contato.html">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+
+            <a class="button button--primary navbar__cta" target="_blank" href="https://wa.me/5521995966620">
+                Solicitar Orçamento
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </nav>
+</header>
+    <main>
+        <section
+            class="contact-section"
+            id="contato"
+            aria-labelledby="contact-title"
+        >
+            <div class="contact-section__container">
+                <div class="contact-section__content">
+                    <p class="contact-section__eyebrow">Fale conosco</p>
+
+                    <h1 id="contact-title">
+                        Estamos à<br>
+                        disposição para<br>
+                        <span>atender você</span>.
+                    </h1>
+
+                    <p class="contact-section__description">
+                        Tire suas dúvidas, solicite um orçamento
+                        ou fale diretamente com a nossa equipe.
+                        Será um prazer atender você.
+                    </p>
+
+                    <address class="contact-section__details">
+                        <div class="contact-section__item">
+                            <span class="contact-section__icon">
+                                <i
+                                    class="bi bi-telephone-fill"
+                                    aria-hidden="true"
+                                ></i>
+                            </span>
+
+                            <div class="contact-section__item-content">
+                                <h2>Telefone</h2>
+
+                                <a href="tel:+5521995966620">
+                                    (21) 99596-6620
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-section__item">
+                            <span class="contact-section__icon">
+                                <i
+                                    class="bi bi-envelope-fill"
+                                    aria-hidden="true"
+                                ></i>
+                            </span>
+
+                            <div class="contact-section__item-content">
+                                <h2>E-mail</h2>
+
+                                <a href="mailto:contato@eletromarinelli.com.br">
+                                    contato@eletromarinelli.com.br
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-section__item">
+                            <span class="contact-section__icon">
+                                <i
+                                    class="bi bi-geo-alt-fill"
+                                    aria-hidden="true"
+                                ></i>
+                            </span>
+
+                            <div class="contact-section__item-content">
+                                <h2>Endereço</h2>
+
+                                <p>
+                                    R. Cavaru, nº 609 — Porto da Pedra<br>
+                                    São Gonçalo — RJ, 24436-400
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-section__item">
+                            <span class="contact-section__icon">
+                                <i
+                                    class="bi bi-clock"
+                                    aria-hidden="true"
+                                ></i>
+                            </span>
+
+                            <div class="contact-section__item-content">
+                                <h2>Horário de atendimento</h2>
+
+                                <p>Segunda a sexta, das 7h às 17h</p>
+                            </div>
+                        </div>
+                    </address>
+                </div>
+
+                <div class="contact-section__card">
+                    <header class="contact-section__form-header">
+                        <h2 id="contact-form-title">Envie sua mensagem</h2>
+
+                        <p>
+                            Preencha os dados abaixo e nossa equipe
+                            entrará em contato o mais breve possível.
+                        </p>
+                    </header>
+
+                    <form
+                        class="contact-form"
+                        id="contact-form"
+                        action="/api/contato"
+                        method="post"
+                        aria-labelledby="contact-form-title"
+                    >
+                        <fieldset class="contact-form__fields">
+                            <legend class="contact-form__sr-only">
+                                Dados de contato
+                            </legend>
+
+                            <div class="contact-form__field">
+                                <label for="contact-name">
+                                    Nome completo *
+                                </label>
+
+                                <input
+                                    id="contact-name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Seu nome"
+                                    autocomplete="name"
+                                    maxlength="120"
+                                    required
+                                >
+                            </div>
+
+                            <div class="contact-form__row">
+                                <div class="contact-form__field">
+                                    <label for="contact-email">
+                                        E-mail *
+                                    </label>
+
+                                    <input
+                                        id="contact-email"
+                                        name="email"
+                                        type="email"
+                                        placeholder="seu@email.com"
+                                        autocomplete="email"
+                                        maxlength="160"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="contact-form__field">
+                                    <label for="contact-phone">
+                                        Telefone *
+                                    </label>
+
+                                    <input
+                                        id="contact-phone"
+                                        name="phone"
+                                        type="tel"
+                                        placeholder="(21) 99999-9999"
+                                        autocomplete="tel"
+                                        maxlength="25"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="contact-form__field">
+                                <label for="contact-company">
+                                    Empresa <span>(opcional)</span>
+                                </label>
+
+                                <input
+                                    id="contact-company"
+                                    name="company"
+                                    type="text"
+                                    placeholder="Nome da sua empresa"
+                                    autocomplete="organization"
+                                    maxlength="160"
+                                >
+                            </div>
+
+                            <div class="contact-form__field">
+                                <label for="contact-message">
+                                    Sua mensagem *
+                                </label>
+
+                                <textarea
+                                    id="contact-message"
+                                    name="message"
+                                    rows="5"
+                                    maxlength="4000"
+                                    placeholder="Descreva sua necessidade, detalhes do projeto ou outras informações importantes..."
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <button
+                                class="contact-form__submit"
+                                type="submit"
+                            >
+                                <span data-contact-submit-label>
+                                    Enviar mensagem
+                                </span>
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                            <div class="contact-form__privacy">
+                                <i
+                                    class="bi bi-lock-fill"
+                                    aria-hidden="true"
+                                ></i>
+
+                                <p>
+                                    Seus dados serão utilizados para responder
+                                    à sua solicitação de contato ou orçamento.
+                                </p>
+                            </div>
+                        </fieldset>
+
+                        <p
+                            class="contact-form__status"
+                            id="contact-status"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                            tabindex="-1"
+                            hidden
+                        ></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container footer__main">
+            <div class="footer__brand">
+                <a
+                    class="footer__logo"
+                    href="index.html"
+                    aria-label="Eletrotécnica Marinelli — Página inicial"
+                >
+                    <img
+                        src="imgs/logo-branca.png"
+                        alt="Eletro Marinelli — Elétrica Naval e Industrial"
+                        loading="lazy"
+                    >
+                </a>
+            </div>
+
+            <nav
+                class="footer__column"
+                aria-labelledby="footer-institutional"
+            >
+                <h2 class="footer__title" id="footer-institutional">
+                    Institucional
+                </h2>
+
+                <ul class="footer__links">
+                    <li>
+                        <a href="index.html">
+                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            Início
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#sobre">
+                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            Sobre nós
+                        </a>
+                    </li>
+                    <li>
+                        <a href="qualidade.html">
+                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            Qualidade
+                        </a>
+                    </li>
+                    <li>
+                        <a href="trabalhe-conosco.html">
+                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            Trabalhe Conosco
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contato.html" aria-current="page">
+                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            Contato
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="footer__column">
+                <h2 class="footer__title">Contato</h2>
+
+                <address class="footer__contact">
+                    <div class="footer__contact-item">
+                        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+
+                        <div>
+                            <strong>Telefone</strong>
+                            <a href="tel:+5521995966620">(21) 99596-6620</a>
+                        </div>
+                    </div>
+
+                    <div class="footer__contact-item">
+                        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+
+                        <div>
+                            <strong>E-mail</strong>
+                            <a href="mailto:contato@eletromarinelli.com.br">
+                                contato@eletromarinelli.com.br
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer__contact-item">
+                        <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+
+                        <div>
+                            <strong>Endereço</strong>
+                            <p>
+                                R. Cavaru, nº 609 — Porto da Pedra<br>
+                                São Gonçalo — RJ, 24436-400
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="footer__contact-item">
+                        <i class="bi bi-clock" aria-hidden="true"></i>
+
+                        <div>
+                            <strong>Horário de atendimento</strong>
+                            <p>Segunda a sexta, das 7h às 17h</p>
+                        </div>
+                    </div>
+                </address>
+            </div>
+
+            <div class="footer__column footer__networks">
+                <h2 class="footer__title">Siga nossas redes</h2>
+
+                <ul class="footer__social">
+                    <li>
+                        <a
+                            href="https://www.linkedin.com/company/eletrot%C3%A9cnica-marinelli/"
+                            aria-label="LinkedIn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.instagram.com/eletrotecnica_marinelli/"
+                            aria-label="Instagram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://wa.me/5521995966620"
+                            aria-label="WhatsApp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="footer__social-text">
+                    Acompanhe nossos conteúdos.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="footer__container footer__bottom-content">
+                <p>
+                    © 2026 Eletrotécnica Marinelli.
+                    Todos os direitos reservados.
+                </p>
+
+                <p>
+                    Desenvolvido por
+                    <strong>THIAGO AUGUSTO — DESENVOLVIMENTO WEB</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.WHATSAPP_NUMBER = "5521995966620";
+    </script>
+</body>
+</html>

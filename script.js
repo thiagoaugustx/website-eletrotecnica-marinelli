@@ -894,3 +894,374 @@ lucide.createIcons();
         }
     });
 })();
+
+(() => {
+    function initScrollReveal() {
+        const section = document.querySelector(".maintenance");
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+        if (
+            !section ||
+            section.dataset.revealInitialized ||
+            reducedMotion.matches ||
+            !("IntersectionObserver" in window)
+        ) return;
+
+        section.dataset.revealInitialized = "true";
+
+        const elements = [
+            ...section.querySelectorAll(`
+                .maintenance__photo,
+                .maintenance__text,
+                .field-gallery__header,
+                .field-gallery__grid > li
+            `)
+        ];
+
+        section.querySelectorAll(".maintenance__text").forEach((text) => {
+            text.style.setProperty("--reveal-delay", "100ms");
+        });
+
+        section.querySelectorAll(".field-gallery__grid > li").forEach(
+            (item, index) => {
+                item.style.setProperty(
+                    "--reveal-delay",
+                    `${Math.min(index * 70, 280)}ms`
+                );
+            }
+        );
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.08
+        });
+
+        elements.forEach((element) => {
+            element.classList.add("scroll-reveal");
+            observer.observe(element);
+        });
+
+        section.addEventListener("focusin", (event) => {
+            const element = event.target.closest(".scroll-reveal");
+
+            if (element) {
+                element.classList.add("is-visible");
+                observer.unobserve(element);
+            }
+        });
+
+        reducedMotion.addEventListener("change", (event) => {
+            if (!event.matches) return;
+
+            observer.disconnect();
+
+            elements.forEach((element) => {
+                element.classList.add("is-visible");
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollReveal, {
+            once: true
+        });
+    } else {
+        initScrollReveal();
+    }
+})();
+
+(() => {
+    function initInspections() {
+        const section = document.querySelector(".inspections");
+
+        if (!section || section.dataset.initialized) return;
+
+        section.dataset.initialized = "true";
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+        const revealElements = [
+            ...section.querySelectorAll("[data-inspection-reveal]")
+        ];
+
+        if (
+            !reducedMotion.matches &&
+            "IntersectionObserver" in window
+        ) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.08
+            });
+
+            revealElements.forEach((element) => {
+                element.classList.add("inspection-reveal");
+                observer.observe(element);
+            });
+
+            section.addEventListener("focusin", (event) => {
+                const element = event.target.closest(
+                    "[data-inspection-reveal]"
+                );
+
+                if (!element) return;
+
+                element.classList.add("is-visible");
+                observer.unobserve(element);
+            });
+
+            reducedMotion.addEventListener("change", (event) => {
+                if (!event.matches) return;
+
+                observer.disconnect();
+
+                revealElements.forEach((element) => {
+                    element.classList.add("is-visible");
+                });
+            });
+        }
+
+        const modal = section.querySelector("#inspection-dialog");
+        const openButton = section.querySelector("[data-inspection-open]");
+        const links = [
+            ...section.querySelectorAll(".inspection-gallery__grid a")
+        ];
+
+        if (!modal || !links.length) return;
+
+        const image = modal.querySelector(".inspection-dialog__image");
+        const caption = modal.querySelector(".inspection-dialog__caption");
+        const thumbnails = modal.querySelector(
+            ".inspection-dialog__thumbnails"
+        );
+
+        const photos = links.map((link) => ({
+            src: link.href,
+            alt: link.querySelector("img").alt
+        }));
+
+        let currentIndex = 0;
+        let previousFocus = null;
+        let previousOverflow = "";
+        let startedOnBackdrop = false;
+
+        const thumbnailButtons = photos.map((photo, index) => {
+            const button = document.createElement("button");
+            const thumbnail = document.createElement("img");
+
+            button.type = "button";
+            button.className = "inspection-dialog__thumbnail";
+            button.setAttribute("aria-label", `Ver imagem ${index + 1}`);
+            button.setAttribute("aria-pressed", "false");
+
+            thumbnail.src = photo.src;
+            thumbnail.alt = "";
+            thumbnail.loading = "lazy";
+
+            button.append(thumbnail);
+            button.addEventListener("click", () => showImage(index));
+            thumbnails.append(button);
+
+            return button;
+        });
+
+        function showImage(index) {
+            currentIndex = (index + photos.length) % photos.length;
+
+            const photo = photos[currentIndex];
+
+            image.src = photo.src;
+            image.alt = photo.alt;
+
+            caption.textContent =
+                `${currentIndex + 1} de ${photos.length} — ${photo.alt}`;
+
+            thumbnailButtons.forEach((button, buttonIndex) => {
+                button.setAttribute(
+                    "aria-pressed",
+                    String(buttonIndex === currentIndex)
+                );
+            });
+        }
+
+        function openGallery(index = 0) {
+            if (modal.open) return;
+
+            previousFocus = document.activeElement;
+            previousOverflow = document.documentElement.style.overflow;
+
+            showImage(index);
+            modal.showModal();
+
+            document.documentElement.style.overflow = "hidden";
+        }
+
+        openButton?.addEventListener("click", () => openGallery());
+
+        links.forEach((link, index) => {
+            link.setAttribute("aria-haspopup", "dialog");
+            link.setAttribute("aria-controls", modal.id);
+
+            link.addEventListener("click", (event) => {
+                if (
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.shiftKey ||
+                    event.altKey
+                ) return;
+
+                event.preventDefault();
+                openGallery(index);
+            });
+        });
+
+        modal.querySelector(".inspection-dialog__close")
+            .addEventListener("click", () => modal.close());
+
+        modal.querySelector("[data-inspection-previous]")
+            .addEventListener("click", () => showImage(currentIndex - 1));
+
+        modal.querySelector("[data-inspection-next]")
+            .addEventListener("click", () => showImage(currentIndex + 1));
+
+        modal.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                showImage(currentIndex - 1);
+            }
+
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                showImage(currentIndex + 1);
+            }
+        });
+
+        modal.addEventListener("pointerdown", (event) => {
+            startedOnBackdrop = event.target === modal;
+        });
+
+        modal.addEventListener("pointercancel", () => {
+            startedOnBackdrop = false;
+        });
+
+        modal.addEventListener("click", (event) => {
+            if (startedOnBackdrop && event.target === modal) {
+                modal.close();
+            }
+
+            startedOnBackdrop = false;
+        });
+
+        modal.addEventListener("close", () => {
+            document.documentElement.style.overflow = previousOverflow;
+            startedOnBackdrop = false;
+
+            if (
+                previousFocus instanceof HTMLElement &&
+                previousFocus.isConnected
+            ) {
+                previousFocus.focus({ preventScroll: true });
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initInspections, {
+            once: true
+        });
+    } else {
+        initInspections();
+    }
+})();
+
+(() => {
+    function initCareersForm() {
+        const form = document.querySelector("#careers-form");
+
+        if (!form || form.dataset.initialized) return;
+
+        form.dataset.initialized = "true";
+
+        const status = document.querySelector("#careers-status");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (!form.reportValidity()) return;
+
+            const data = new FormData(form);
+            const getValue = (name) => String(data.get(name) || "").trim();
+
+            const name = getValue("name");
+            const email = getValue("email");
+            const phone = getValue("phone");
+            const city = getValue("city");
+            const state = getValue("state");
+            const area = getValue("area");
+            const message = getValue("message");
+
+            if (!name || !phone || !city || !state || !area) {
+                status.textContent =
+                    "Preencha os campos obrigatórios com suas informações.";
+                return;
+            }
+
+            const recipient = form.dataset.recipient;
+            const subject = `Trabalhe Conosco — ${area} — ${name}`;
+
+            const body = [
+                "Olá, equipe da Eletrotécnica Marinelli.",
+                "",
+                "Gostaria de apresentar meu perfil profissional.",
+                "",
+                `Nome: ${name}`,
+                `E-mail: ${email}`,
+                `Telefone: ${phone}`,
+                `Cidade: ${city}`,
+                `Estado: ${state}`,
+                `Área de interesse: ${area}`,
+                "",
+                "Experiência e qualificações:",
+                message || "Informações disponíveis no currículo.",
+                "",
+                "Atenciosamente,",
+                name
+            ].join("\n");
+
+            const mailto =
+                `mailto:${recipient}` +
+                `?subject=${encodeURIComponent(subject)}` +
+                `&body=${encodeURIComponent(body)}`;
+
+            status.textContent =
+                "Conclua o envio no seu aplicativo de e-mail e lembre-se " +
+                "de anexar o currículo. Se o aplicativo não abrir, envie " +
+                `diretamente para ${recipient}.`;
+
+            window.location.href = mailto;
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCareersForm, {
+            once: true
+        });
+    } else {
+        initCareersForm();
+    }
+})();

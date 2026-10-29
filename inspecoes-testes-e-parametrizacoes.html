@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eletro Marinelli</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="./js/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header" id="header">
+    <nav class="navbar container" aria-label="Navegação principal">
+        <a class="navbar__brand" href="index.html" aria-label="Página inicial">
+            <img
+                src="imgs/logo-branca.png"
+                alt="Eletro Marinelli — Elétrica Naval & Industrial"
+            >
+        </a>
+
+        <button
+            class="navbar__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar__menu" id="navbar-menu">
+            <ul class="navbar__links">
+                <li>
+                    <a class="navbar__link" href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-qualidade"
+                    >
+                        <a href="qualidade.html">Qualidade</a>
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-qualidade"
+                        hidden
+                    >
+                        <li>
+                            <a href="qualidade.html">Política de SGQ</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__dropdown">
+                    <a href="servicos.html"><button
+                        class="navbar__link navbar__dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu-servicos"
+                    >
+                        <a href="servicos.html">Serviços</a>
+                        <span class="navbar__chevron" aria-hidden="true"></span>
+                    </button></a>
+
+                    <ul
+                        class="navbar__submenu"
+                        id="menu-servicos"
+                        hidden
+                    >
+                        <li>
+                            <a href="manutencao-preventiva-e-corretiva.html">
+                                Manutenção Preventiva e Corretiva
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="inspecoes-testes-e-parametrizacoes.html">
+                                Inspeções, Testes e Parametrizações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="instalacao-de-sistemas-e-equipamentos-retrofit.html">
+                                Instalação de sistemas e equipamentos e Retrofit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="montagem-de-paineis-eletricos.html">
+                                Montagem de painéis elétricos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="apoios-em-provas-de-mar.html">
+                                Apoio em provas de mar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="trabalhe-conosco.html">
+                        Trabalhe Conosco
+                    </a>
+                </li>
+
+                <li>
+                    <a class="navbar__link" href="contato.html">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+
+            <a class="button button--primary navbar__cta" target="_blank" href="https://wa.me/5521995966620">
+                Solicitar Orçamento
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<section class="banner" aria-labelledby="banner-title">
+    <div class="banner__photo-manutencao" aria-hidden="true"></div>
+
+    <div class="container banner__inner">
+      <p class="eyebrow eyebrow--blue">Qualidade, Dedicação e Profissionalismo</p>
+
+      <h1 id="banner-title">
+        Inspeções, Testes <br><span>e Parametrizações.</span>
+      </h1>
+
+      <p class="banner__description">
+        Qualidade dos serviços e compromisso com o prazo de entrega.
+      </p>
+    </div>
+  </section>
+
+
+<main class="inspections" id="inspecoes">
+    <nav class="inspections__breadcrumb" aria-label="Localização">
+        <ol class="inspections__container">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li aria-current="page">
+                Inspeções, Testes e Parametrizações
+            </li>
+        </ol>
+    </nav>
+
+    <div class="inspections__container inspections__content">
+
+        <section class="inspections__row" aria-labelledby="technical-title">
+            <div class="inspections__photo" data-inspection-reveal>
+                <img
+                    src="imgs/manutencao-preventiva/assets09.png"
+                    alt="Componentes de um painel elétrico"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
+
+            <div class="inspections__text" data-inspection-reveal>
+                <h2 id="technical-title">Inspeções Técnicas</h2>
+
+                <ul class="inspections__list">
+                    <li>
+                        Verificação visual e funcional de painéis, cabos,
+                        conexões e dispositivos de proteção.
+                    </li>
+                    <li>
+                        Avaliação de conformidade com normas técnicas
+                        e requisitos operacionais.
+                    </li>
+                    <li>
+                        Identificação de desgastes, sobreaquecimentos
+                        e riscos potenciais.
+                    </li>
+                    <li>
+                        Emissão de laudos com recomendações
+                        de melhorias e correções.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            class="inspections__row inspections__row--reverse"
+            aria-labelledby="functional-title"
+        >
+            <div class="inspections__photo" data-inspection-reveal>
+                <img
+                    src="imgs/manutencao-preventiva/assets07.png"
+                    alt="Medição elétrica com multímetro"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
+
+            <div class="inspections__text" data-inspection-reveal>
+                <h2 id="functional-title">Testes Funcionais</h2>
+
+                <ul class="inspections__list">
+                    <li>
+                        Testes de continuidade, isolação e resistência
+                        elétrica em circuitos e equipamentos.
+                    </li>
+                    <li>
+                        Simulações de falhas para validação
+                        de sistemas de proteção e alarme.
+                    </li>
+                    <li>
+                        Medições de tensão, corrente, frequência e fator
+                        de potência com instrumentos calibrados.
+                    </li>
+                    <li>
+                        Validação de desempenho em condições
+                        reais de operação.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="inspections__row" aria-labelledby="settings-title">
+            <div class="inspections__photo" data-inspection-reveal>
+                <img
+                    src="imgs/manutencao-preventiva/assets08.png"
+                    alt="Equipamento de monitoramento elétrico"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
+
+            <div class="inspections__text" data-inspection-reveal>
+                <h2 id="settings-title">Parametrizações e Ajustes</h2>
+
+                <ul class="inspections__list">
+                    <li>
+                        Configuração de relés, inversores, CLPs
+                        e sistemas supervisórios conforme projeto.
+                    </li>
+                    <li>
+                        Ajuste de limites de operação, tempos
+                        de resposta e curvas de proteção.
+                    </li>
+                    <li>
+                        Atualização de firmware e integração
+                        com redes industriais.
+                    </li>
+                    <li>
+                        Registro e documentação das parametrizações
+                        realizadas para controle técnico.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <section class="inspection-gallery" aria-labelledby="inspection-gallery-title">
+        <div class="inspections__container">
+            <header class="inspection-gallery__header" data-inspection-reveal>
+                <h2 id="inspection-gallery-title">Veja imagens
+</h2>
+
+            </header>
+
+            <ul class="inspection-gallery__grid">
+                <li data-inspection-reveal>
+                    <a href="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a568430.jfif.png">
+                        <img
+                            src="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a568430.jfif.png"
+                            alt="Registro em campo 1"
+                            width="600"
+                            height="450"
+                            loading="lazy"
+                        >
+                    </a>
+                </li>
+
+                <li data-inspection-reveal>
+                    <a href="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a568e81.jfif.png">
+                        <img
+                            src="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a568e81.jfif.png"
+                            alt="Registro em campo 2"
+                            width="600"
+                            height="450"
+                            loading="lazy"
+                        >
+                    </a>
+                </li>
+
+                <li data-inspection-reveal>
+                    <a href="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a5697e0.jfif.png">
+                        <img
+                            src="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a5697e0.jfif.png"
+                            alt="Registro em campo 3"
+                            width="600"
+                            height="450"
+                            loading="lazy"
+                        >
+                    </a>
+                </li>
+
+                <li data-inspection-reveal>
+                    <a href="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a56a456.jpeg">
+                        <img
+                            src="imgs/inspeções-testes-e-parametrizações/galeria-1770644645-6989e4a56a456.jpeg"
+                            alt="Registro em campo 4"
+                            width="600"
+                            height="450"
+                            loading="lazy"
+                        >
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <dialog
+        class="inspection-dialog"
+        id="inspection-dialog"
+        aria-labelledby="inspection-dialog-title"
+    >
+        <div class="inspection-dialog__panel">
+            <header class="inspection-dialog__header">
+                <h2 id="inspection-dialog-title">Veja imagens</h2>
+
+                <button
+                    class="inspection-dialog__close"
+                    type="button"
+                    aria-label="Fechar galeria"
+                    autofocus
+                >
+                    ×
+                </button>
+            </header>
+
+            <div class="inspection-dialog__stage">
+                <button
+                    class="inspection-dialog__arrow"
+                    type="button"
+                    data-inspection-previous
+                    aria-label="Imagem anterior"
+                >
+                    ←
+                </button>
+
+                <figure class="inspection-dialog__figure">
+                    <img class="inspection-dialog__image" alt="">
+
+                    <figcaption
+                        class="inspection-dialog__caption"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    ></figcaption>
+                </figure>
+
+                <button
+                    class="inspection-dialog__arrow"
+                    type="button"
+                    data-inspection-next
+                    aria-label="Próxima imagem"
+                >
+                    →
+                </button>
+            </div>
+
+            <div
+                class="inspection-dialog__thumbnails"
+                role="group"
+                aria-label="Selecionar imagem"
+            ></div>
+        </div>
+    </dialog>
+</main>
+
+<footer class="footer">
+    <div class="footer__container footer__main">
+        <div class="footer__brand">
+            <a class="footer__logo" href="#inicio" aria-label="Eletro Marinelli — Início">
+                <img
+                    src="imgs/logo-branca.png"
+                    alt="Eletro Marinelli — Elétrica naval e industrial"
+                    loading="lazy"
+                >
+            </a>
+        </div>
+
+        <nav class="footer__column" aria-labelledby="footer-institutional">
+            <h2 class="footer__title" id="footer-institutional">
+                Institucional
+            </h2>
+
+            <ul class="footer__links">
+                <li>
+                    <a href="#inicio">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="#sobre">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Sobre nós
+                    </a>
+                </li>
+                <li>
+                    <a href="#qualidade">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Qualidade
+                    </a>
+                </li>
+                <li>
+                    <a href="#trabalhe-conosco">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Trabalhe Conosco
+                    </a>
+                </li>
+                <li>
+                    <a href="#orcamento">
+                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        Contato
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="footer__column">
+            <h2 class="footer__title">Contato</h2>
+
+            <address class="footer__contact">
+                <div class="footer__contact-item">
+                    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Telefone</strong>
+                        <a href="tel:+552126201234">(21) 99596-6620</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>E-mail</strong>
+                        <a href="mailto:contato@eletromarinelli.com.br">
+                            contato@eletromarinelli.com.br
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <div>
+                        <strong>Endereço</strong>
+                        <p>
+                            R. Cavaru, n° 609 - Porto da Pedra, <br>  São Gonçalo - RJ, 24436-400
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    <div>
+                        <strong>Horário de atendimento</strong>
+                        <p>Segunda a sexta, das 7h às 17h</p>
+                    </div>
+                </div>
+            </address>
+        </div>
+
+        <div class="footer__column footer__networks">
+            <h2 class="footer__title">Siga nossas redes</h2>
+
+            <ul class="footer__social">
+                <li>
+                    <a href="https://www.linkedin.com/company/eletrot%C3%A9cnica-marinelli/"
+                       aria-label="LinkedIn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/eletrotecnica_marinelli/"
+                       aria-label="Instagram"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?l=pt&phone=5521995966620"
+                       aria-label="Whatsapp"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="footer__social-text">
+                Acompanhe nossos conteúdos.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <div class="footer__container footer__bottom-content">
+            <p>
+                © 2026 Eletrotécnica Marinelli.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Desenvolvido por <strong><a href="">THIAGO AUGUSTO - DESENVOLVIMENTO WEB</strong></a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- BOTÃO WHATSAPP -->
+
+<!-- Botão WhatsApp Flutuante --> <script> window.WHATSAPP_NUMBER = "5521995966620"; </script> <link rel="stylesheet" href="style.css"> 
+ 
+<script src="https://cdn.jsdelivr.net/gh/danilocampos/whatsapp-floating-button@main/whatsapp-button.js"></script>
+
+
+
+</body>
