@@ -1,7 +1,7 @@
 const header = document.querySelector("#header");
 const menuToggle = document.querySelector(".navbar__toggle");
 const menu = document.querySelector("#navbar-menu");
-const mobileBreakpoint = window.matchMedia("(max-width: 900px)");
+const mobileBreakpoint = window.matchMedia("(max-width: 1100px)");
 
 if (header) {
     function updateHeader() {
@@ -155,7 +155,7 @@ if (hero) {
     const slides = [...hero.querySelectorAll(".hero__slide")];
 
     const images = [
-        "imgs/slide-1.jpg",
+        "imgs/slide-03.png",
         "imgs/slide-2.jpg",
         "imgs/slide-3.jpg",
         "imgs/slide-4.jpg"
@@ -602,7 +602,7 @@ document.querySelectorAll(".servicos").forEach((section) => {
 
 (function() {
     // Configurações
-    const phoneNumber = window.WHATSAPP_NUMBER || '553438132026';
+    const phoneNumber = window.WHATSAPP_NUMBER || '5521995966620';
     const message = window.WHATSAPP_MESSAGE || '';
 
 
@@ -648,7 +648,7 @@ document.querySelectorAll(".servicos").forEach((section) => {
         
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                document.body.appendChild(createButton());
+                if (!document.querySelector("#wa_button")) document.body.appendChild(createButton());
             });
         } else {
             document.body.appendChild(createButton());

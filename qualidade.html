@@ -7,14 +7,15 @@
     <title>Eletro Marinelli</title>
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script defer src="https://unpkg.com/lucide@latest"></script>
-    <script defer src="./js/script.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <link rel="icon" type="image/png" href="imgs/logo-marinelli-favicon.png">
 </head>
 <body>
-    <header class="header" id="header">
+<header class="header" id="header">
     <nav class="navbar container" aria-label="Navegação principal">
+
+        <!-- LOGO -->
         <a class="navbar__brand" href="index.html" aria-label="Página inicial">
             <img
                 src="imgs/logo-branca.png"
@@ -22,6 +23,7 @@
             >
         </a>
 
+        <!-- BOTÃO MENU MOBILE -->
         <button
             class="navbar__toggle"
             type="button"
@@ -34,52 +36,65 @@
             <span></span>
         </button>
 
+        <!-- MENU -->
         <div class="navbar__menu" id="navbar-menu">
+
             <ul class="navbar__links">
+
                 <li>
                     <a class="navbar__link" href="index.html">
                         Início
                     </a>
                 </li>
 
+                <!-- QUALIDADE -->
                 <li class="navbar__dropdown">
-                    <button
-                        class="navbar__link navbar__dropdown-toggle"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="menu-qualidade"
-                    >
-                        <a href="qualidade.html">Qualidade</a>
-                        <span class="navbar__chevron" aria-hidden="true"></span>
-                    </button>
 
-                    <ul
-                        class="navbar__submenu"
-                        id="menu-qualidade"
-                        hidden
-                    >
+                    <div class="navbar__dropdown-trigger">
+                        <a class="navbar__link" href="qualidade.html">
+                            Qualidade
+                        </a>
+
+                        <button
+                            class="navbar__dropdown-toggle"
+                            type="button"
+                            aria-label="Expandir menu Qualidade"
+                            aria-expanded="false"
+                            aria-controls="menu-qualidade"
+                        >
+                            <span class="navbar__chevron" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <ul class="navbar__submenu" id="menu-qualidade" hidden>
                         <li>
-                            <a href="qualidade.html">Política de SGQ</a>
+                            <a href="qualidade.html">
+                                Política do SGQ
+                            </a>
                         </li>
                     </ul>
                 </li>
 
+                <!-- SERVIÇOS -->
                 <li class="navbar__dropdown">
-                    <a href="servicos.html"><button
-                        class="navbar__link navbar__dropdown-toggle"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="menu-servicos"
-                    >
-                        <a href="servicos.html">Serviços</a>
-                        <span class="navbar__chevron" aria-hidden="true"></span>
-                    </button></a>
 
-                    <ul
-                        class="navbar__submenu"
-                        id="menu-servicos"
-                        hidden
-                    >
+                    <div class="navbar__dropdown-trigger">
+                        <a class="navbar__link" href="servicos.html">
+                            Serviços
+                        </a>
+
+                        <button
+                            class="navbar__dropdown-toggle"
+                            type="button"
+                            aria-label="Expandir menu Serviços"
+                            aria-expanded="false"
+                            aria-controls="menu-servicos"
+                        >
+                            <span class="navbar__chevron" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <ul class="navbar__submenu" id="menu-servicos" hidden>
                         <li>
                             <a href="manutencao-preventiva-e-corretiva.html">
                                 Manutenção Preventiva e Corretiva
@@ -94,19 +109,19 @@
 
                         <li>
                             <a href="instalacao-de-sistemas-e-equipamentos-retrofit.html">
-                                Instalação de sistemas e equipamentos e Retrofit
+                                Instalação de Sistemas e Equipamentos e Retrofit
                             </a>
                         </li>
 
                         <li>
                             <a href="montagem-de-paineis-eletricos.html">
-                                Montagem de painéis elétricos
+                                Montagem de Painéis Elétricos
                             </a>
                         </li>
 
                         <li>
                             <a href="apoios-em-provas-de-mar.html">
-                                Apoio em provas de mar
+                                Apoio em Provas de Mar
                             </a>
                         </li>
                     </ul>
@@ -123,12 +138,20 @@
                         Contato
                     </a>
                 </li>
+
             </ul>
 
-            <a class="button button--primary navbar__cta" target="_blank" href="https://wa.me/5521995966620">
+            <!-- CTA -->
+            <a
+                class="button button--primary navbar__cta"
+                href="https://wa.me/5521995966620"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 Solicitar Orçamento
                 <span aria-hidden="true">→</span>
             </a>
+
         </div>
     </nav>
 </header>
@@ -158,17 +181,17 @@
       <div class="container">
 
         <nav class="breadcrumb" aria-label="Você está aqui">
-          <a href="https://eletrotecnicamarinelli.com/">Início</a>
+          <a href="index.html">Início</a>
           <span aria-hidden="true">›</span>
 
-          <a href="/qualidade/">Qualidade</a>
+          <a href="qualidade.html">Qualidade</a>
           <span aria-hidden="true">›</span>
 
           <span aria-current="page">Política do SGQ</span>
         </nav>
 
         <header class="conteudo__header">
-          <a class="back-button" href="https://eletrotecnicamarinelli.com/">
+          <a class="back-button" href="index.html">
             <span aria-hidden="true">←</span>
             Voltar
           </a>
@@ -317,7 +340,7 @@
 <footer class="footer">
     <div class="footer__container footer__main">
         <div class="footer__brand">
-            <a class="footer__logo" href="#inicio" aria-label="Eletro Marinelli — Início">
+            <a class="footer__logo" href="index.html" aria-label="Eletro Marinelli — Início">
                 <img
                     src="imgs/logo-branca.png"
                     alt="Eletro Marinelli — Elétrica naval e industrial"
@@ -333,31 +356,31 @@
 
             <ul class="footer__links">
                 <li>
-                    <a href="#inicio">
+                    <a href="index.html">
                         <i class="bi bi-chevron-right" aria-hidden="true"></i>
                         Início
                     </a>
                 </li>
                 <li>
-                    <a href="#sobre">
+                    <a href="index.html#sobre">
                         <i class="bi bi-chevron-right" aria-hidden="true"></i>
                         Sobre nós
                     </a>
                 </li>
                 <li>
-                    <a href="#qualidade">
+                    <a href="qualidade.html">
                         <i class="bi bi-chevron-right" aria-hidden="true"></i>
                         Qualidade
                     </a>
                 </li>
                 <li>
-                    <a href="#trabalhe-conosco">
+                    <a href="trabalhe-conosco.html">
                         <i class="bi bi-chevron-right" aria-hidden="true"></i>
                         Trabalhe Conosco
                     </a>
                 </li>
                 <li>
-                    <a href="#orcamento">
+                    <a href="contato.html">
                         <i class="bi bi-chevron-right" aria-hidden="true"></i>
                         Contato
                     </a>
@@ -373,7 +396,7 @@
                     <i class="bi bi-telephone-fill" aria-hidden="true"></i>
                     <div>
                         <strong>Telefone</strong>
-                        <a href="tel:+552126201234">(21) 99596-6620</a>
+                        <a href="tel:+5521995966620">(21) 99596-6620</a>
                     </div>
                 </div>
 
@@ -412,14 +435,6 @@
 
             <ul class="footer__social">
                 <li>
-                    <a href="https://www.linkedin.com/company/eletrot%C3%A9cnica-marinelli/"
-                       aria-label="LinkedIn"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <i class="bi bi-linkedin" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li>
                     <a href="https://www.instagram.com/eletrotecnica_marinelli/"
                        aria-label="Instagram"
                        target="_blank"
@@ -451,7 +466,7 @@
             </p>
 
             <p>
-                Desenvolvido por <strong><a href="">THIAGO AUGUSTO - DESENVOLVIMENTO WEB</strong></a>
+                Desenvolvido por <strong>THIAGO AUGUSTO — DESENVOLVIMENTO WEB</strong>
             </p>
         </div>
     </div>
