@@ -139,6 +139,11 @@ a {
     box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
 }
 
+.header.header--solid {
+    background-color: var(--navy);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -3886,154 +3891,42 @@ h2 {
   background: #174154;
 }
 
-/* =========================
-   VISUALIZADOR DO DOCUMENTO
-========================= */
-
-.document-viewer {
-  overflow: hidden;
-  border: 1px solid #525252;
-  border-radius: 5px 5px 0 0;
-  background: #303030;
-  box-shadow: 0 2px 5px #0002;
-}
-
-.document-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  min-height: 48px;
-  padding: 8px 17px;
-  background: #363636;
-  color: #f1f1f1;
-  font-size: 12px;
-}
-
-.document-icon {
-  font-size: 22px;
-}
-
-.toolbar-title {
-  flex: 1;
-}
-
-.zoom-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.zoom-controls button {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: 0;
-  border-radius: 3px;
-  background: #474747;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.zoom-controls button:hover {
-  background: #616161;
-}
-
-.zoom-controls button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
-.zoom-controls output {
-  min-width: 48px;
+/* =========================================
+   POLÍTICA DA QUALIDADE — LINK PARA PDF
+========================================= */
+.quality-policy {
+  margin: 36px 0 12px;
   text-align: center;
 }
 
-.toolbar-label {
-  margin-left: auto;
-  color: #c8c8c8;
+.quality-policy__link {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  max-width: 100%;
+  color: #d19807;
+  font-size: 18\px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
 }
 
-.document-scroll {
-  height: clamp(420px, 58vw, 730px);
-  padding: 0 42px 28px;
-  overflow: auto;
-  scrollbar-color: #777 #303030;
+.quality-policy__link:hover {
+  color: #071d2d;
 }
 
-.document-sheet {
-  width: 100%;
-  min-width: 260px;
-  min-height: 100%;
-  margin-inline: auto;
-  padding: 55px clamp(25px, 8vw, 112px) 30px;
-  background: #fff;
-  color: #171717;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.45;
-  box-shadow: 0 0 4px #0008;
-}
-
-.document-sheet h3 {
-  margin: 20px 0 28px;
+.quality-policy__link span {
   font-size: 17px;
-  text-align: center;
+  line-height: 1;
+  text-decoration: none;
 }
 
-.document-sheet p,
-.document-sheet li {
-  text-align: justify;
-}
-
-.document-sheet ol {
-  padding-left: 20px;
-}
-
-.document-sheet li {
-  margin-bottom: 20px;
-  padding-left: 5px;
-}
-
-.document-sheet .document-notice {
-  color: #8a8a8a;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.document-sheet .document-signature {
-  margin-top: 34px;
-  font-style: italic;
-  text-align: center;
-}
-
-.document-sheet footer {
-  margin-top: 35px;
-  font-size: 10px;
-  text-align: center;
-}
-
-.document-frame {
-  display: block;
-  width: 100%;
-  height: min(80vh, 900px);
-  min-height: 450px;
-  border: 0;
-}
-
-.viewer-note,
-.pdf-link {
-  color: #6a7780;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.pdf-link {
-  display: inline-block;
-  margin-top: 14px;
+@media (max-width: 600px) {
+  .quality-policy { margin-top: 26px; }
+  .quality-policy__link { font-size: 14px; }
 }
 
 /* =========================
@@ -4104,31 +3997,7 @@ h2 {
     font-size: 12px;
   }
 
-  .document-toolbar {
-    gap: 8px;
-    padding-inline: 10px;
-  }
 
-  .toolbar-label {
-    display: none;
-  }
-
-  .toolbar-title {
-    font-size: 10px;
-  }
-
-  .document-scroll {
-    padding-inline: 15px;
-  }
-
-  .document-sheet {
-    padding: 25px 24px;
-    font-size: 11px;
-  }
-
-  .document-sheet h3 {
-    font-size: 13px;
-  }
 }
 
 /* SEÇÃO */
@@ -6424,3 +6293,373 @@ h2 {
         display: none;
     }
 }
+
+
+/* ==========================================
+   CERTIFICAÇÃO ISO 9001:2015
+   ELETROTÉCNICA MARINELLI
+========================================== */
+
+.quality-iso {
+    background: #f7f8fa;
+    padding: 20px 0 60px;
+    color: #121a39;
+}
+
+/* Container */
+
+.quality-iso > .container {
+    width: min(100% - 48px, 1170px);
+    margin-inline: auto;
+}
+
+/* Cabeçalho */
+
+.quality-iso__header {
+    margin-bottom: 55px;
+}
+
+.quality-iso__eyebrow {
+    display: inline-block;
+    position: relative;
+
+    padding-top: 18px;
+    margin-bottom: 24px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.5;
+
+    color: #121a39;
+}
+
+.quality-iso__eyebrow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+    background: #e7b620;
+}
+
+/* Título */
+
+.quality-iso__title {
+    margin: 0 0 20px;
+
+    font-size: clamp(32px, 3.8vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+
+    color: #121a39;
+}
+
+.quality-iso__title span {
+    color: #edbc12;
+}
+
+/* Descrição inicial */
+
+.quality-iso__intro {
+    max-width: 100%;
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    color: #30374a;
+}
+
+/* ==========================================
+   GRID PRINCIPAL
+========================================== */
+
+.quality-iso__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+
+    align-items: center;
+    gap: 65px;
+}
+
+/* Conteúdo textual */
+
+.quality-iso__content {
+    min-width: 0;
+}
+
+.quality-iso__description p {
+    margin: 0 0 25px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    color: #30374a;
+}
+
+.quality-iso__description p:last-child {
+    margin-bottom: 0;
+}
+
+.quality-iso__description strong {
+    color: #121a39;
+    font-weight: 700;
+}
+
+/* ==========================================
+   SELO ISO 9001
+========================================== */
+
+
+.quality-iso__seal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    width: 100%;
+    max-width: 475px;
+    margin-top: 42px;
+    padding: 25px 45px;
+
+    background: #fff;
+    border: 1px solid #c5c5c5;
+    border-radius: 18px;
+}
+
+.quality-iso__seal-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.quality-iso__certified {
+    color: #777;
+    font-size: 23px;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.quality-iso__iso {
+    color: #102b8d;
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.quality-iso__ukas {
+    color: #102b8d;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.quality-iso__seal-divider {
+    width: 1px;
+    height: 105px;
+    background: #c5c5c5;
+    flex-shrink: 0;
+}
+
+.quality-iso__bureau-logo {
+    display: block;
+    width: 115px;
+    max-width: 30%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .quality-iso__seal {
+        gap: 12px;
+        padding: 18px 15px;
+    }
+
+    .quality-iso__certified {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .quality-iso__iso {
+        font-size: 21px;
+    }
+
+    .quality-iso__ukas {
+        font-size: 17px;
+    }
+
+    .quality-iso__seal-divider {
+        height: 80px;
+    }
+
+    .quality-iso__bureau-logo {
+        width: 85px;
+    }
+}
+
+
+/* ==========================================
+   IMAGEM PRINCIPAL
+========================================== */
+
+.quality-iso__image {
+    width: 100%;
+    aspect-ratio: 1.12 / 1;
+
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.quality-iso__image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ==========================================
+   RESPONSIVIDADE - TABLET
+========================================== */
+
+@media (max-width: 992px) {
+
+    .quality-iso {
+        padding: 75px 0;
+    }
+
+    .quality-iso__grid {
+        gap: 35px;
+    }
+
+    .quality-iso__header {
+        margin-bottom: 42px;
+    }
+
+    .quality-iso__title {
+        font-size: 40px;
+    }
+
+    .quality-iso__description p {
+        font-size: 15px;
+    }
+
+    .quality-iso__seal {
+        margin-top: 30px;
+        padding: 18px;
+    }
+
+    .quality-iso__image {
+        aspect-ratio: 4 / 5;
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDADE - MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .quality-iso {
+        padding: 60px 0 70px;
+    }
+
+    .quality-iso > .container {
+        width: min(100% - 36px, 1170px);
+    }
+
+    .quality-iso__header {
+        margin-bottom: 35px;
+    }
+
+    .quality-iso__eyebrow {
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        padding-top: 15px;
+        margin-bottom: 22px;
+    }
+
+    .quality-iso__title {
+        font-size: clamp(29px, 7vw, 38px);
+        line-height: 1.2;
+        letter-spacing: -0.8px;
+        margin-bottom: 18px;
+    }
+
+    .quality-iso__title span {
+        display: block;
+    }
+
+    .quality-iso__intro {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Uma coluna no mobile */
+
+    .quality-iso__grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .quality-iso__description p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    /* Imagem */
+
+    .quality-iso__image {
+        grid-row: 1;
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+    }
+
+    /* Selo */
+
+    .quality-iso__seal {
+        max-width: 100%;
+        margin-top: 30px;
+        padding: 18px 22px;
+        border-radius: 12px;
+    }
+
+    .quality-iso__seal img {
+        max-width: 320px;
+    }
+}
+
+/* ==========================================
+   TELAS PEQUENAS
+========================================== */
+
+@media (max-width: 480px) {
+
+    .quality-iso {
+        padding: 50px 0 60px;
+    }
+
+    .quality-iso__title {
+        font-size: 30px;
+    }
+
+    .quality-iso__image {
+        aspect-ratio: 1.3 / 1;
+    }
+
+    .quality-iso__seal {
+        padding: 15px;
+    }
+}
+
