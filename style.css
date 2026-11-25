@@ -6851,87 +6851,141 @@ h2 {
    POP-UP DE FEEDBACK — MARINELLI
 ========================================= */
 
-.marinelli-feedback {
+/* =========================================
+   MODAL DE FEEDBACK — MARINELLI
+========================================= */
+
+dialog#marinelli-feedback {
   position: fixed;
-  width: min(420px, calc(100% - 32px));
-  max-width: 420px;
+  inset: 0;
+  width: min(610px, calc(100vw - 32px));
+  max-width: 610px;
   max-height: calc(100dvh - 32px);
   margin: auto;
   padding: 0;
-  border: 1px solid rgba(255, 202, 50, .3);
-  border-radius: 12px;
-  background: #071d2d;
+  border: 1px solid rgba(255, 202, 50, .65);
+  border-top: 3px solid #ffca32;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    #071d2d 0%,
+    #06243a 55%,
+    #071d2d 100%
+  );
   color: #fff;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .4);
   overflow: auto;
+  box-sizing: border-box;
 }
 
-.marinelli-feedback::backdrop {
-  background: rgba(3, 15, 25, .78);
+dialog#marinelli-feedback::backdrop {
+  background: rgba(3, 14, 24, .72);
   backdrop-filter: blur(5px);
 }
 
-.marinelli-feedback__card {
-  padding: clamp(26px, 5vw, 40px);
-  text-align: center;
+.marinelli-feedback .marinelli-feedback__content {
+  padding: 26px 30px 30px;
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.marinelli-feedback__brand {
-  margin: 0 0 25px;
+/* CABEÇALHO */
+
+.marinelli-feedback__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.marinelli-feedback__logo {
+  display: block;
+  width: 235px;
+  max-width: calc(100% - 55px);
+  height: auto;
+  object-fit: contain;
+}
+
+.marinelli-feedback__close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #dce6ec;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.marinelli-feedback__close:hover {
   color: #ffca32;
-  font-family: "Orbitron", Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  line-height: 1.6;
+}
+
+/* CONTEÚDO */
+
+.marinelli-feedback__body {
+  padding: 20px 0 26px;
+  text-align: center;
 }
 
 .marinelli-feedback__icon {
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 24px;
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 23px;
   border: 2px solid #ffca32;
   border-radius: 50%;
   color: #ffca32;
-  font-size: 31px;
-  font-weight: 700;
-}
-
-.marinelli-feedback[data-type="error"]
-.marinelli-feedback__icon {
-  border-color: #ff9a86;
-  color: #ff9a86;
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .marinelli-feedback h2 {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #fff;
-  font-size: clamp(22px, 5vw, 27px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(25px, 4.5vw, 34px);
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -.8px;
 }
 
-.marinelli-feedback #marinelli-feedback-message {
-  margin: 0 0 30px;
-  color: #d6e0e7;
-  font-size: 14px;
-  line-height: 1.7;
+.marinelli-feedback .marinelli-feedback__message {
+  margin: 0 0 10px;
+  color: #eef3f6;
+  font-size: 17px;
+  line-height: 1.5;
   overflow-wrap: anywhere;
 }
+
+.marinelli-feedback__submessage {
+  margin: 0;
+  color: #b8c9d5;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* BOTÃO */
 
 .marinelli-feedback__button {
   display: block;
   width: 100%;
-  min-height: 48px;
-  border: none;
-  border-radius: 5px;
+  min-height: 54px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
   background: #ffca32;
   color: #071d2d;
-  font: inherit;
-  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
   font-weight: 700;
   cursor: pointer;
   transition: background .2s ease;
@@ -6941,25 +6995,45 @@ h2 {
   background: #ffda66;
 }
 
-.marinelli-feedback__button:focus-visible {
-  outline: 3px solid #fff;
+.marinelli-feedback button:focus-visible {
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .marinelli-feedback[open] {
-    animation: marinelli-modal-entrada .2s ease-out;
+/* ESTADO DE ERRO */
+
+.marinelli-feedback[data-type="error"]
+.marinelli-feedback__icon {
+  color: #ff9b87;
+  border-color: #ff9b87;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+  .marinelli-feedback .marinelli-feedback__content {
+    padding: 22px 20px 24px;
   }
 
-  @keyframes marinelli-modal-entrada {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
+  .marinelli-feedback__logo {
+    width: 190px;
+  }
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .marinelli-feedback__body {
+    padding: 25px 0;
+  }
+
+  .marinelli-feedback__icon {
+    width: 62px;
+    height: 62px;
+    font-size: 36px;
+  }
+
+  .marinelli-feedback .marinelli-feedback__message {
+    font-size: 15px;
+  }
+
+  .marinelli-feedback__submessage {
+    font-size: 13px;
   }
 }

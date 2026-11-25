@@ -1496,62 +1496,161 @@ lucide.createIcons();
 
 /* MODAL DE FEEDBACK — MARINELLI */
 
+
+/* =========================================
+   MODAL DE FEEDBACK — ELETROTÉCNICA MARINELLI
+========================================= */
+
 (() => {
   const dialog = document.createElement("dialog");
 
+  dialog.id = "marinelli-feedback";
   dialog.className = "marinelli-feedback";
-  dialog.setAttribute("aria-labelledby", "feedback-title");
-  dialog.setAttribute("aria-describedby", "feedback-message");
+
+  dialog.setAttribute(
+    "aria-labelledby",
+    "marinelli-feedback-title"
+  );
+
+  dialog.setAttribute(
+    "aria-describedby",
+    "marinelli-feedback-message"
+  );
 
   dialog.innerHTML = `
     <div class="marinelli-feedback__content">
-      <p class="marinelli-feedback__brand">
-        ELETROTÉCNICA MARINELLI
-      </p>
 
-      <div class="marinelli-feedback__icon"
-           aria-hidden="true">✓</div>
+      <!-- CABEÇALHO -->
+      <div class="marinelli-feedback__header">
+        <img
+          class="marinelli-feedback__logo"
+          src="imgs/logo-branca.png"
+          alt="Eletrotécnica Marinelli"
+        >
 
-      <h2 id="feedback-title"></h2>
-      <p id="feedback-message"></p>
+        <button
+          class="marinelli-feedback__close"
+          type="button"
+          aria-label="Fechar aviso"
+        >
+          &times;
+        </button>
+      </div>
 
-      <button class="marinelli-feedback__button"
-              type="button">
-        Entendi
-      </button>
+      <!-- CONTEÚDO -->
+      <div class="marinelli-feedback__body">
+
+        <div
+          class="marinelli-feedback__icon"
+          aria-hidden="true"
+        >
+          ✓
+        </div>
+
+        <h2 id="marinelli-feedback-title"></h2>
+
+        <p
+          class="marinelli-feedback__message"
+          id="marinelli-feedback-message"
+        ></p>
+
+        <p class="marinelli-feedback__submessage"></p>
+
+      </div>
+
+      <!-- RODAPÉ -->
+      <div class="marinelli-feedback__footer">
+        <button
+          class="marinelli-feedback__button"
+          type="button"
+        >
+          Entendi
+        </button>
+      </div>
+
     </div>
   `;
 
   document.body.appendChild(dialog);
 
-  const titulo = dialog.querySelector("#feedback-title");
-  const mensagem = dialog.querySelector("#feedback-message");
+  // ELEMENTOS DO MODAL
+  const titulo = dialog.querySelector(
+    "#marinelli-feedback-title"
+  );
+
+  const mensagem = dialog.querySelector(
+    "#marinelli-feedback-message"
+  );
+
+  const submensagem = dialog.querySelector(
+    ".marinelli-feedback__submessage"
+  );
+
   const simbolo = dialog.querySelector(
     ".marinelli-feedback__icon"
   );
 
-  dialog.querySelector("button").addEventListener(
-    "click",
-    () => dialog.close()
+  const botao = dialog.querySelector(
+    ".marinelli-feedback__button"
   );
 
+  const botaoFechar = dialog.querySelector(
+    ".marinelli-feedback__close"
+  );
+
+  // FECHAMENTO
+  function fecharModal() {
+    if (dialog.open) {
+      dialog.close();
+    }
+  }
+
+  botao.addEventListener("click", fecharModal);
+  botaoFechar.addEventListener("click", fecharModal);
+
   dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
+    if (event.target === dialog) {
+      fecharModal();
+    }
   });
 
+  // CONTROLE DE FEEDBACK
   window.MarinelliFeedback = {
     show(tipo, texto) {
       const sucesso = tipo === "success";
 
-      dialog.dataset.type = tipo;
+      dialog.dataset.type = sucesso
+        ? "success"
+        : "error";
+
+      // ÍCONE
+      simbolo.textContent = sucesso ? "✓" : "!";
+
+      // TÍTULO
       titulo.textContent = sucesso
         ? "Enviado com sucesso!"
-        : "Não foi possível concluir";
+        : "Não foi possível concluir o envio";
 
-      simbolo.textContent = sucesso ? "✓" : "!";
-      mensagem.textContent = texto;
+      // MENSAGEM PRINCIPAL
+      mensagem.textContent = sucesso
+        ? "Recebemos suas informações com sucesso."
+        : (
+            texto ||
+            "Não foi possível confirmar o envio."
+          );
 
-      if (!dialog.open) dialog.showModal();
+      // MENSAGEM COMPLEMENTAR
+      submensagem.textContent = sucesso
+        ? "Nossa equipe dará continuidade ao atendimento."
+        : "Caso o problema persista, entre em contato com nossa equipe.";
+
+      // EXIBIÇÃO
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+
+      botao.focus();
     }
   };
 })();
+
