@@ -1265,3 +1265,121 @@ lucide.createIcons();
         initCareersForm();
     }
 })();
+
+
+
+/* INTEGRAÇÃO DO FORMULÁRIO CONTATO */
+
+(() => {
+    const API_URL =
+        "https://marinelli-formularios-api.thiagoacdesouza.workers.dev/api/formularios";
+
+    function initContactForm() {
+        const form = document.querySelector("#contact-form");
+
+        if (!form || form.dataset.apiInitialized === "true") return;
+
+        form.dataset.apiInitialized = "true";
+
+        const fieldset = form.querySelector("fieldset");
+        const status = form.querySelector("#contact-status");
+        const label = form.querySelector("[data-contact-submit-label]");
+
+        function mostrarStatus(mensagem, tipo) {
+            if (!status) return;
+
+            status.textContent = mensagem;
+            status.dataset.type = tipo;
+            status.hidden = false;
+        }
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (fieldset?.disabled || !form.reportValidity()) return;
+
+            const formData = new FormData(form);
+
+            const valor = (nome) =>
+                String(formData.get(nome) || "").trim();
+
+            const token = valor("cf-turnstile-response");
+
+            if (!token) {
+                mostrarStatus(
+                    "Conclua a verificação de segurança antes de enviar.",
+                    "error"
+                );
+                return;
+            }
+
+            const dados = {
+                tipo: "contato",
+                name: valor("name"),
+                email: valor("email"),
+                phone: valor("phone"),
+                company: valor("company"),
+                message: valor("message"),
+                turnstileToken: token
+            };
+
+            if (fieldset) fieldset.disabled = true;
+            if (label) label.textContent = "Enviando...";
+
+            mostrarStatus("Enviando sua mensagem...", "info");
+
+            try {
+                const resposta = await fetch(API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dados)
+                });
+
+                const resultado = await resposta.json();
+
+                if (!resposta.ok || resultado.sucesso !== true) {
+                    throw new Error(
+                        resultado.mensagem ||
+                        "Não foi possível concluir o envio."
+                    );
+                }
+
+                form.reset();
+
+                mostrarStatus(
+                    "Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.",
+                    "success"
+                );
+
+            } catch (erro) {
+                console.error("Erro no formulário de contato:", erro);
+
+                mostrarStatus(
+                    "Não foi possível confirmar o envio. Se o problema persistir, fale conosco pelo WhatsApp.",
+                    "error"
+                );
+
+            } finally {
+                if (fieldset) fieldset.disabled = false;
+                if (label) label.textContent = "Enviar mensagem";
+
+                if (
+                    window.turnstile &&
+                    typeof window.turnstile.reset === "function"
+                ) {
+                    window.turnstile.reset();
+                }
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initContactForm, {
+            once: true
+        });
+    } else {
+        initContactForm();
+    }
+})();

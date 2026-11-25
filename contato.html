@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <link rel="icon" type="image/png" href="imgs/logo-marinelli-favicon.png">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
+
+    
 </head>
 <body>
 <header class="header header--solid" id="header">
@@ -207,8 +210,8 @@
                             <div class="contact-section__item-content">
                                 <h2>E-mail</h2>
 
-                                <a href="mailto:contato@eletromarinelli.com.br">
-                                    contato@eletromarinelli.com.br
+                                <a href="mailto:eletrotecnicamarinelli@gmail.com">
+                                    eletrotecnicamarinelli@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -331,7 +334,7 @@
                                     type="text"
                                     placeholder="Nome da sua empresa"
                                     autocomplete="organization"
-                                    maxlength="160"
+                                    maxlength="150"
                                 >
                             </div>
 
@@ -344,11 +347,20 @@
                                     id="contact-message"
                                     name="message"
                                     rows="5"
-                                    maxlength="4000"
+                                    maxlength="2000"
                                     placeholder="Descreva sua necessidade, detalhes do projeto ou outras informações importantes..."
                                     required
                                 ></textarea>
                             </div>
+
+
+                            <!-- ATENÇÃO! Aqui é feita a verificação antispam Cloudflare -->
+                            <div
+                                class="cf-turnstile"
+                                data-sitekey="0x4AAAAAAGJzJVQl0UW6Iy9f"
+                                data-theme="light"
+                            ></div>
+
 
                             <button
                                 class="contact-form__submit"
