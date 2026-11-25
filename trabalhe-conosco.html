@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <link rel="icon" type="image/png" href="imgs/logo-marinelli-favicon.png">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <header class="header" id="header">
@@ -271,7 +272,6 @@
                     <form
                         class="recruitment__form"
                         id="recruitment-form"
-                        action="/api/candidaturas"
                         method="post"
                         enctype="multipart/form-data"
                     >
@@ -445,6 +445,15 @@
                                 <span data-submit-label>Enviar currículo</span>
                                 <i class="bi bi-arrow-right" aria-hidden="true"></i>
                             </button>
+
+
+                            <!-- Verificação antispam Cloudflare -->
+                            <div
+                                class="cf-turnstile"
+                                data-sitekey="0x4AAAAAAGJzJVQl0UW6Iy9f"
+                                data-theme="light"
+                            ></div>
+
                         </fieldset>
 
                         <p

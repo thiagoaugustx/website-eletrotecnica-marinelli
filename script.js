@@ -1189,82 +1189,179 @@ lucide.createIcons();
     }
 })();
 
+
+/* INTEGRAÇÃO DO FORMULÁRIO TRABALHE CONOSCO */
+
 (() => {
-    function initCareersForm() {
-        const form = document.querySelector("#careers-form");
+  const API_URL =
+    "https://marinelli-formularios-api.thiagoacdesouza.workers.dev/api/formularios";
 
-        if (!form || form.dataset.initialized) return;
+  const LIMITE_PDF = 5 * 1024 * 1024;
 
-        form.dataset.initialized = "true";
+  function initRecruitmentForm() {
+    const form = document.querySelector("#recruitment-form");
 
-        const status = document.querySelector("#careers-status");
+    if (!form || form.dataset.apiInitialized === "true") return;
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
+    form.dataset.apiInitialized = "true";
 
-            if (!form.reportValidity()) return;
+    const fieldset = form.querySelector("fieldset");
+    const status = form.querySelector("#recruitment-status");
+    const label = form.querySelector("[data-submit-label]");
 
-            const data = new FormData(form);
-            const getValue = (name) => String(data.get(name) || "").trim();
+    function mostrarStatus(texto, tipo) {
+      if (!status) return;
 
-            const name = getValue("name");
-            const email = getValue("email");
-            const phone = getValue("phone");
-            const city = getValue("city");
-            const state = getValue("state");
-            const area = getValue("area");
-            const message = getValue("message");
-
-            if (!name || !phone || !city || !state || !area) {
-                status.textContent =
-                    "Preencha os campos obrigatórios com suas informações.";
-                return;
-            }
-
-            const recipient = form.dataset.recipient;
-            const subject = `Trabalhe Conosco — ${area} — ${name}`;
-
-            const body = [
-                "Olá, equipe da Eletrotécnica Marinelli.",
-                "",
-                "Gostaria de apresentar meu perfil profissional.",
-                "",
-                `Nome: ${name}`,
-                `E-mail: ${email}`,
-                `Telefone: ${phone}`,
-                `Cidade: ${city}`,
-                `Estado: ${state}`,
-                `Área de interesse: ${area}`,
-                "",
-                "Experiência e qualificações:",
-                message || "Informações disponíveis no currículo.",
-                "",
-                "Atenciosamente,",
-                name
-            ].join("\n");
-
-            const mailto =
-                `mailto:${recipient}` +
-                `?subject=${encodeURIComponent(subject)}` +
-                `&body=${encodeURIComponent(body)}`;
-
-            status.textContent =
-                "Conclua o envio no seu aplicativo de e-mail e lembre-se " +
-                "de anexar o currículo. Se o aplicativo não abrir, envie " +
-                `diretamente para ${recipient}.`;
-
-            window.location.href = mailto;
-        });
+      status.textContent = texto;
+      status.dataset.type = tipo;
+      status.hidden = false;
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initCareersForm, {
-            once: true
-        });
-    } else {
-        initCareersForm();
+    function lerBase64(arquivo) {
+      return new Promise((resolve, reject) => {
+        const leitor = new FileReader();
+
+        leitor.onerror = () => {
+          reject(new Error("Não foi possível ler o currículo."));
+        };
+
+        leitor.onload = () => {
+          const conteudo = String(leitor.result || "");
+          const separador = conteudo.indexOf(",");
+
+          if (separador < 0) {
+            reject(new Error("Não foi possível converter o currículo."));
+            return;
+          }
+
+          resolve(conteudo.slice(separador + 1));
+        };
+
+        leitor.readAsDataURL(arquivo);
+      });
     }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (fieldset?.disabled || !form.reportValidity()) return;
+
+      const dadosFormulario = new FormData(form);
+
+      const valor = (nome) =>
+        String(dadosFormulario.get(nome) || "").trim();
+
+      const arquivo = dadosFormulario.get("resume");
+      const token = valor("cf-turnstile-response");
+
+      if (!(arquivo instanceof File) || !arquivo.name) {
+        mostrarStatus("Selecione seu currículo em PDF.", "error");
+        return;
+      }
+
+      if (
+        !/\.pdf$/i.test(arquivo.name) ||
+        (arquivo.type && arquivo.type !== "application/pdf")
+      ) {
+        mostrarStatus("O currículo precisa estar em formato PDF.", "error");
+        return;
+      }
+
+      if (arquivo.size === 0 || arquivo.size > LIMITE_PDF) {
+        mostrarStatus(
+          "O currículo deve ter até 5 MB e não pode estar vazio.",
+          "error"
+        );
+        return;
+      }
+
+      if (!token) {
+        mostrarStatus(
+          "Conclua a verificação de segurança antes de enviar.",
+          "error"
+        );
+        return;
+      }
+
+      if (fieldset) fieldset.disabled = true;
+      if (label) label.textContent = "Enviando...";
+
+      mostrarStatus("Enviando candidatura e currículo...", "info");
+
+      try {
+        const resumeBase64 = await lerBase64(arquivo);
+
+        const payload = {
+          tipo: "candidatura",
+          name: valor("name"),
+          email: valor("email"),
+          phone: valor("phone"),
+          city: valor("city"),
+          state: valor("state"),
+          area: valor("area"),
+          message: valor("message"),
+          resumeBase64,
+          turnstileToken: token
+        };
+
+        const resposta = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok || resultado.sucesso !== true) {
+          throw new Error(
+            resultado.mensagem || "Não foi possível concluir o envio."
+          );
+        }
+
+        form.reset();
+
+        mostrarStatus(
+          "Candidatura e currículo enviados com sucesso!",
+          "success"
+        );
+
+      } catch (erro) {
+        console.error("Erro ao enviar candidatura:", erro);
+
+        mostrarStatus(
+          "Não foi possível confirmar o envio. Verifique com a empresa antes de tentar novamente.",
+          "error"
+        );
+
+      } finally {
+        if (fieldset) fieldset.disabled = false;
+        if (label) label.textContent = "Enviar currículo";
+
+        if (
+          window.turnstile &&
+          typeof window.turnstile.reset === "function"
+        ) {
+          window.turnstile.reset();
+        }
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initRecruitmentForm,
+      { once: true }
+    );
+  } else {
+    initRecruitmentForm();
+  }
 })();
+
+
+
 
 
 
