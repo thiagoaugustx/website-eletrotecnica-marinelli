@@ -6900,7 +6900,7 @@ dialog#marinelli-feedback::backdrop {
 
 .marinelli-feedback__logo {
   display: block;
-  width: 235px;
+  width: 150px;
   max-width: calc(100% - 55px);
   height: auto;
   object-fit: contain;

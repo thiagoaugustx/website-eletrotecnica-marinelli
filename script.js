@@ -1642,7 +1642,7 @@ lucide.createIcons();
       // MENSAGEM COMPLEMENTAR
       submensagem.textContent = sucesso
         ? "Nossa equipe dará continuidade ao atendimento."
-        : "Caso o problema persista, entre em contato com nossa equipe.";
+        : "Caso o problema persista, entre em contato com nossa equipe através do whatsapp.";
 
       // EXIBIÇÃO
       if (!dialog.open) {
