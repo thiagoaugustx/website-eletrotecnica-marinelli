@@ -1209,13 +1209,19 @@ lucide.createIcons();
     const status = form.querySelector("#recruitment-status");
     const label = form.querySelector("[data-submit-label]");
 
-    function mostrarStatus(texto, tipo) {
-      if (!status) return;
 
-      status.textContent = texto;
-      status.dataset.type = tipo;
-      status.hidden = false;
+    function mostrarStatus(texto, tipo) {
+    if (!status) return;
+
+    status.textContent = texto;
+    status.dataset.type = tipo;
+    status.hidden = false;
+
+    if (tipo === "success" || tipo === "error") {
+        window.MarinelliFeedback?.show(tipo, texto);
     }
+    }
+
 
     function lerBase64(arquivo) {
       return new Promise((resolve, reject) => {
@@ -1382,13 +1388,19 @@ lucide.createIcons();
         const status = form.querySelector("#contact-status");
         const label = form.querySelector("[data-contact-submit-label]");
 
-        function mostrarStatus(mensagem, tipo) {
-            if (!status) return;
 
-            status.textContent = mensagem;
-            status.dataset.type = tipo;
-            status.hidden = false;
+        function mostrarStatus(mensagem, tipo) {
+        if (!status) return;
+
+        status.textContent = mensagem;
+        status.dataset.type = tipo;
+        status.hidden = false;
+
+        if (tipo === "success" || tipo === "error") {
+            window.MarinelliFeedback?.show(tipo, mensagem);
         }
+        }
+
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -1479,4 +1491,67 @@ lucide.createIcons();
     } else {
         initContactForm();
     }
+})();
+
+
+/* MODAL DE FEEDBACK — MARINELLI */
+
+(() => {
+  const dialog = document.createElement("dialog");
+
+  dialog.className = "marinelli-feedback";
+  dialog.setAttribute("aria-labelledby", "feedback-title");
+  dialog.setAttribute("aria-describedby", "feedback-message");
+
+  dialog.innerHTML = `
+    <div class="marinelli-feedback__content">
+      <p class="marinelli-feedback__brand">
+        ELETROTÉCNICA MARINELLI
+      </p>
+
+      <div class="marinelli-feedback__icon"
+           aria-hidden="true">✓</div>
+
+      <h2 id="feedback-title"></h2>
+      <p id="feedback-message"></p>
+
+      <button class="marinelli-feedback__button"
+              type="button">
+        Entendi
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(dialog);
+
+  const titulo = dialog.querySelector("#feedback-title");
+  const mensagem = dialog.querySelector("#feedback-message");
+  const simbolo = dialog.querySelector(
+    ".marinelli-feedback__icon"
+  );
+
+  dialog.querySelector("button").addEventListener(
+    "click",
+    () => dialog.close()
+  );
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  window.MarinelliFeedback = {
+    show(tipo, texto) {
+      const sucesso = tipo === "success";
+
+      dialog.dataset.type = tipo;
+      titulo.textContent = sucesso
+        ? "Enviado com sucesso!"
+        : "Não foi possível concluir";
+
+      simbolo.textContent = sucesso ? "✓" : "!";
+      mensagem.textContent = texto;
+
+      if (!dialog.open) dialog.showModal();
+    }
+  };
 })();

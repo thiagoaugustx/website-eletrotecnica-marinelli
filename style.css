@@ -6844,3 +6844,121 @@ h2 {
     max-width: 100%;
   }
 }
+
+
+/* =========================================
+   POP-UP DE FEEDBACK — MARINELLI
+========================================= */
+
+.marinelli-feedback {
+  position: fixed;
+  width: min(420px, calc(100% - 32px));
+  max-width: 420px;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgba(255, 202, 50, .3);
+  border-radius: 12px;
+  background: #071d2d;
+  color: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+  overflow: auto;
+}
+
+.marinelli-feedback::backdrop {
+  background: rgba(3, 15, 25, .78);
+  backdrop-filter: blur(5px);
+}
+
+.marinelli-feedback__card {
+  padding: clamp(26px, 5vw, 40px);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.marinelli-feedback__brand {
+  margin: 0 0 25px;
+  color: #ffca32;
+  font-family: "Orbitron", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+.marinelli-feedback__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  border: 2px solid #ffca32;
+  border-radius: 50%;
+  color: #ffca32;
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.marinelli-feedback[data-type="error"]
+.marinelli-feedback__icon {
+  border-color: #ff9a86;
+  color: #ff9a86;
+}
+
+.marinelli-feedback h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(22px, 5vw, 27px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.marinelli-feedback #marinelli-feedback-message {
+  margin: 0 0 30px;
+  color: #d6e0e7;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.marinelli-feedback__button {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  border-radius: 5px;
+  background: #ffca32;
+  color: #071d2d;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.marinelli-feedback__button:hover {
+  background: #ffda66;
+}
+
+.marinelli-feedback__button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marinelli-feedback[open] {
+    animation: marinelli-modal-entrada .2s ease-out;
+  }
+
+  @keyframes marinelli-modal-entrada {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
