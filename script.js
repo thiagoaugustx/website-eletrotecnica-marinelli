@@ -292,7 +292,6 @@ document.querySelectorAll(".servicos").forEach((section) => {
     "(prefers-reduced-motion: reduce)"
   );
 
-  // Velocidade da rolagem em pixels por segundo.
   const speed = 35;
   let movimentoAcumulado = 0;
 
@@ -1428,6 +1427,7 @@ lucide.createIcons();
                 email: valor("email"),
                 phone: valor("phone"),
                 company: valor("company"),
+                subject: valor("subject"),
                 message: valor("message"),
                 turnstileToken: token
             };
@@ -1654,3 +1654,387 @@ lucide.createIcons();
   };
 })();
 
+
+/* =========================================
+   REGISTROS EM CAMPO — CARROSSEL CONTÍNUO
+========================================= */
+
+(() => {
+  const VELOCIDADE = 30; // Pixels por segundo
+
+  function iniciarCarrosseis() {
+    document.querySelectorAll(
+      ".field-gallery, .inspection-gallery"
+    ).forEach((secao) => {
+
+      const lista = secao.querySelector(
+        ".field-gallery__grid, .inspection-gallery__grid"
+      );
+
+      if (!lista || lista.dataset.continuo === "true") return;
+
+      const originais = [...lista.children].filter(
+        (elemento) => elemento.tagName === "LI"
+      );
+
+      if (originais.length < 2) return;
+
+      const linksOriginais = originais.map(
+        (item) => item.querySelector("a")
+      );
+
+      originais.forEach((item) => {
+        const imagem = item.querySelector("img");
+        if (imagem) imagem.draggable = false;
+      });
+
+      lista.dataset.continuo = "true";
+
+      // ESTRUTURA
+      const carrossel = document.createElement("div");
+      carrossel.className = "campo-carousel";
+      carrossel.setAttribute("role", "region");
+      carrossel.setAttribute(
+        "aria-roledescription",
+        "carrossel"
+      );
+      carrossel.setAttribute(
+        "aria-label",
+        secao.querySelector("h2")?.textContent.trim() ||
+        "Registros em campo"
+      );
+
+      const janela = document.createElement("div");
+      janela.className = "campo-carousel__janela";
+
+      lista.classList.add("campo-carousel__trilho");
+
+      lista.parentNode.insertBefore(carrossel, lista);
+      carrossel.append(janela);
+      janela.append(lista);
+
+      // DUPLICAR IMAGENS PARA ROLAGEM INFINITA
+      function criarCopias() {
+        return originais.map((original, indice) => {
+          const copia = original.cloneNode(true);
+
+          copia.classList.remove(
+            "scroll-reveal",
+            "inspection-reveal",
+            "is-visible"
+          );
+
+          copia.removeAttribute("data-inspection-reveal");
+          copia.setAttribute("aria-hidden", "true");
+
+          const link = copia.querySelector("a");
+
+          if (link) {
+            link.tabIndex = -1;
+
+            link.addEventListener("click", (evento) => {
+              if (
+                evento.ctrlKey ||
+                evento.metaKey ||
+                evento.shiftKey ||
+                evento.altKey
+              ) return;
+
+              evento.preventDefault();
+
+              // Usa a galeria ampliada original
+              linksOriginais[indice]?.click();
+            });
+          }
+
+          return copia;
+        });
+      }
+
+      lista.prepend(...criarCopias());
+      lista.append(...criarCopias(), ...criarCopias());
+
+      secao.classList.add("campo-carousel-ativo");
+
+      // SETAS
+      function criarSeta(rotulo, classe, simbolo) {
+        const botao = document.createElement("button");
+
+        botao.type = "button";
+        botao.className = `campo-carousel__seta ${classe}`;
+        botao.setAttribute("aria-label", rotulo);
+        botao.textContent = simbolo;
+
+        carrossel.append(botao);
+        return botao;
+      }
+
+      const anterior = criarSeta(
+        "Imagem anterior",
+        "campo-carousel__seta--anterior",
+        "‹"
+      );
+
+      const proxima = criarSeta(
+        "Próxima imagem",
+        "campo-carousel__seta--proxima",
+        "›"
+      );
+
+      let passo = 0;
+      let ciclo = 0;
+      let deslocamento = 0;
+      let iniciou = false;
+      let ultimoTempo = 0;
+
+      let visivel = true;
+      let sobre = false;
+      let emFoco = false;
+      let arrasto = null;
+      let bloquearCliqueAte = 0;
+      let movimentoManual = null;
+      let pausaAte = 0;
+
+      const modal = document.querySelector(
+        "#gallery-modal, #inspection-dialog"
+      );
+
+      const reduzirMovimento = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      // MOVIMENTO INFINITO SEM SALTOS
+      function normalizar() {
+        if (!ciclo) return;
+
+        while (deslocamento >= ciclo * 2) {
+          deslocamento -= ciclo;
+        }
+
+        while (deslocamento < ciclo) {
+          deslocamento += ciclo;
+        }
+      }
+
+      function desenhar() {
+        normalizar();
+
+        lista.style.transform =
+          `translate3d(${-deslocamento}px, 0, 0)`;
+      }
+
+      function medir() {
+        const cicloAnterior = ciclo;
+
+        const progresso = cicloAnterior
+          ? (deslocamento - cicloAnterior) / cicloAnterior
+          : 0;
+
+        const estilo = getComputedStyle(lista);
+        const gap = parseFloat(estilo.columnGap) || 0;
+
+        passo = originais[0].getBoundingClientRect().width + gap;
+        ciclo = originais.length * passo;
+
+        deslocamento = ciclo * (1 + progresso);
+
+        if (!iniciou) {
+          deslocamento = ciclo;
+          iniciou = true;
+        }
+
+        desenhar();
+      }
+
+      // NAVEGAÇÃO MANUAL SUAVE
+      function movimentarUmaFoto(direcao) {
+        if (movimentoManual) {
+          deslocamento += movimentoManual.delta *
+            (1 - movimentoManual.progresso);
+        }
+
+        movimentoManual = {
+          delta: direcao * passo,
+          progresso: 0,
+          tempo: 0
+        };
+
+        pausaAte = performance.now() + 1000;
+      }
+
+      anterior.addEventListener("click", () => {
+        movimentarUmaFoto(-1);
+      });
+
+      proxima.addEventListener("click", () => {
+        movimentarUmaFoto(1);
+      });
+
+      // PAUSA DURANTE INTERAÇÃO
+      carrossel.addEventListener("mouseenter", () => {
+        sobre = true;
+      });
+
+      carrossel.addEventListener("mouseleave", () => {
+        sobre = false;
+      });
+
+      carrossel.addEventListener("focusin", () => {
+        emFoco = Boolean(
+          carrossel.querySelector(":focus-visible")
+        );
+      });
+
+      carrossel.addEventListener("focusout", () => {
+        queueMicrotask(() => {
+          emFoco = Boolean(
+            carrossel.querySelector(":focus-visible")
+          );
+        });
+      });
+
+      carrossel.addEventListener("pointerdown", () => {
+        emFoco = false;
+      });
+
+      // ARRASTAR COM MOUSE OU TOQUE
+      janela.addEventListener("pointerdown", (evento) => {
+        if (
+          evento.button !== 0 ||
+          evento.target.closest("button")
+        ) return;
+
+        arrasto = {
+          id: evento.pointerId,
+          x: evento.clientX,
+          y: evento.clientY,
+          anterior: evento.clientX,
+          movido: false
+        };
+      });
+
+      janela.addEventListener("pointermove", (evento) => {
+        if (!arrasto || arrasto.id !== evento.pointerId) {
+          return;
+        }
+
+        const dx = evento.clientX - arrasto.x;
+        const dy = evento.clientY - arrasto.y;
+
+        if (
+          !arrasto.movido &&
+          (Math.abs(dx) < 9 || Math.abs(dx) < Math.abs(dy))
+        ) return;
+
+        arrasto.movido = true;
+
+        deslocamento -= evento.clientX - arrasto.anterior;
+        arrasto.anterior = evento.clientX;
+
+        desenhar();
+      });
+
+      janela.addEventListener("pointerup", (evento) => {
+        if (!arrasto || evento.pointerId !== arrasto.id) {
+          return;
+        }
+
+        if (arrasto.movido) {
+          bloquearCliqueAte = performance.now() + 500;
+        }
+
+        arrasto = null;
+      });
+
+      janela.addEventListener("pointercancel", () => {
+        arrasto = null;
+      });
+
+      // NÃO ABRIR FOTO ACIDENTALMENTE APÓS ARRASTAR
+      janela.addEventListener("click", (evento) => {
+        if (performance.now() < bloquearCliqueAte) {
+          evento.preventDefault();
+          evento.stopPropagation();
+        }
+      }, true);
+
+      // PAUSAR FORA DA TELA
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((entradas) => {
+          visivel = entradas[0].isIntersecting;
+        }, {
+          threshold: 0.05
+        }).observe(carrossel);
+      }
+
+      // RECALCULAR NO REDIMENSIONAMENTO
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(medir).observe(janela);
+      } else {
+        window.addEventListener("resize", medir);
+      }
+
+      // ANIMAÇÃO CONTÍNUA
+      function animar(agora) {
+        const dt = Math.min(
+          agora - (ultimoTempo || agora),
+          50
+        );
+
+        ultimoTempo = agora;
+
+        const pausado =
+          document.hidden ||
+          !visivel ||
+          sobre ||
+          emFoco ||
+          reduzirMovimento.matches ||
+          modal?.open ||
+          agora < pausaAte;
+
+        if (!pausado && !arrasto) {
+          deslocamento += VELOCIDADE * dt / 1000;
+        }
+
+        // Transição das setas
+        if (movimentoManual) {
+          const anterior = movimentoManual.progresso;
+
+          movimentoManual.tempo += dt;
+
+          const t = Math.min(
+            movimentoManual.tempo / 450,
+            1
+          );
+
+          const proximo = 1 - Math.pow(1 - t, 3);
+
+          deslocamento += movimentoManual.delta *
+            (proximo - anterior);
+
+          movimentoManual.progresso = proximo;
+
+          if (t === 1) {
+            movimentoManual = null;
+          }
+        }
+
+        desenhar();
+        requestAnimationFrame(animar);
+      }
+
+      medir();
+      requestAnimationFrame(animar);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      iniciarCarrosseis,
+      { once: true }
+    );
+  } else {
+    iniciarCarrosseis();
+  }
+})();

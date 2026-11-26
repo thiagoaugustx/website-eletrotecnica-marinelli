@@ -592,7 +592,7 @@ a {
 }
 
 .hero__content {
-    width: min(100%, 660px);
+    width: min(100%, 960px);
     padding-left: 3%;
 
 }
@@ -623,7 +623,7 @@ a {
 
 .hero__title {
     margin-bottom: 20px;
-    font-size: clamp(36px, 4.2vw, 60px);
+    font-size: clamp(36px, 4.2vw, 48px);
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -1.5px;
@@ -7036,4 +7036,308 @@ dialog#marinelli-feedback::backdrop {
   .marinelli-feedback__submessage {
     font-size: 13px;
   }
+}
+
+
+/* CAMPO ASSUNTO — CONTATO */
+
+.contact-form__select-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.contact-form__select-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+
+    padding: 11px 42px 11px 13px;
+
+    border: 1px solid #dce2e9;
+    border-radius: 5px;
+
+    background: #ffffff;
+    color: var(--contact-navy);
+
+    font: inherit;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333333a5;
+    cursor: pointer;
+    transition: border-color 180ms ease;
+}
+
+/* SETA DO MENU */
+
+.contact-form__select-wrap::after {
+    content: "";
+
+    position: absolute;
+    right: 17px;
+    top: calc(50% - 5px);
+
+    width: 8px;
+    height: 8px;
+
+    border-right: 2px solid #071d2d;
+    border-bottom: 2px solid #071d2d;
+
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+.contact-form__select-wrap select:focus {
+    border-color: #b58a00;
+    outline: 2px solid #ffca3240;
+    outline-offset: 2px;
+}
+
+.contact-form__select-wrap select:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   REGISTROS EM CAMPO — CARROSSEL CONTÍNUO
+========================================= */
+
+.campo-carousel {
+    position: relative;
+    width: 100%;
+    isolation: isolate;
+}
+
+.campo-carousel__janela {
+    overflow: hidden;
+    width: 100%;
+    touch-action: pan-y;
+}
+
+/* TRILHO HORIZONTAL */
+
+.campo-carousel .campo-carousel__trilho {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    will-change: transform;
+}
+
+/* CINCO IMAGENS VISÍVEIS NO DESKTOP */
+
+.campo-carousel .campo-carousel__trilho > li {
+    flex: 0 0 calc((100% - 56px) / 5);
+    min-width: 0;
+
+    padding: 0;
+    margin: 0;
+
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* FOTOGRAFIAS */
+
+.campo-carousel .campo-carousel__trilho > li > a {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+    border-radius: 7px;
+
+    background: #dce4e9;
+    cursor: zoom-in;
+}
+
+.campo-carousel .campo-carousel__trilho img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: none;
+    transition: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.campo-carousel .campo-carousel__trilho a:hover img {
+    transform: none;
+}
+
+/* EVITAR ANIMAÇÕES DE REVELAÇÃO NOS SLIDES */
+
+.maintenance .campo-carousel .campo-carousel__trilho > li,
+.inspections .campo-carousel .campo-carousel__trilho > li {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* REMOVER BOTÃO ANTIGO VER MAIS IMAGENS */
+
+.campo-carousel-ativo .field-gallery__more,
+.campo-carousel-ativo .inspection-gallery__more {
+    display: none;
+}
+
+/* SETAS LATERAIS */
+
+.campo-carousel__seta {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+    padding: 0 0 3px;
+
+    border: 1px solid rgba(255, 255, 255, .65);
+    border-radius: 50%;
+
+    background: rgba(7, 29, 45, .82);
+    color: #fff;
+
+    font: inherit;
+    font-size: 32px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.campo-carousel__seta:hover {
+    background: #ffca32;
+    color: #071d2d;
+}
+
+.campo-carousel__seta--anterior {
+    left: 6px;
+}
+
+.campo-carousel__seta--proxima {
+    right: 6px;
+}
+
+.campo-carousel :is(button, a):focus-visible {
+    outline: 3px solid #ffca32;
+    outline-offset: 2px;
+}
+
+/* TABLET — TRÊS IMAGENS */
+
+@media (max-width: 1050px) {
+    .campo-carousel .campo-carousel__trilho > li {
+        flex-basis: calc((100% - 28px) / 3);
+    }
+}
+
+/* CELULAR — UMA IMAGEM E PARTE DA PRÓXIMA */
+
+@media (max-width: 650px) {
+    .campo-carousel .campo-carousel__trilho {
+        gap: 12px;
+    }
+
+    .campo-carousel .campo-carousel__trilho > li {
+        flex-basis: 78%;
+    }
+
+    .campo-carousel__seta {
+        width: 34px;
+        height: 34px;
+        font-size: 27px;
+    }
+}
+
+/* =========================================
+   AJUSTES DO RODAPÉ — PÁGINA QUALIDADE
+   Ícones locais em SVG, sem dependência do CDN.
+========================================= */
+
+.pagina-qualidade .footer,
+.pagina-qualidade .footer__main,
+.pagina-qualidade .footer__bottom {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.pagina-qualidade .footer__networks,
+.pagina-qualidade .footer__social,
+.pagina-qualidade .footer__social li {
+    min-width: 0;
+}
+
+.pagina-qualidade .footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+}
+
+.pagina-qualidade .footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #edb713;
+}
+
+.pagina-qualidade .footer__social-icon {
+    display: block;
+    flex: none;
+    width: 31px;
+    height: 31px;
+}
+
+.pagina-qualidade .footer__social a:hover {
+    color: #ffffff;
+}
+
+/* Evita textos longos escaparem das colunas em telas menores. */
+.pagina-qualidade .footer__contact-item a,
+.pagina-qualidade .footer__contact-item p {
+    overflow-wrap: anywhere;
+}
+
+/* O CSS anterior usava #ffffff1e (aprox. 12% de opacidade). */
+.pagina-qualidade .footer__bottom {
+    color: #b5c5d4;
+}
+
+.pagina-qualidade .footer__bottom strong {
+    color: #cbd7e1;
+}
+
+@media (max-width: 600px) {
+    .pagina-qualidade .footer__social a {
+        width: 44px;
+        height: 44px;
+    }
 }
