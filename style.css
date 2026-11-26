@@ -7333,3 +7333,15 @@ dialog#marinelli-feedback::backdrop {
         height: 44px;
     }
 }
+
+/* BOTÃO VOLTAR — PÁGINAS DE SERVIÇOS */
+
+.service-back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.service-back .back-button {
+    margin: 0 0 12px;
+}
