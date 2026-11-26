@@ -6330,13 +6330,13 @@ h2 {
     z-index: -3;
 }
 
-/* Acessibilidade */
+/* Acessibilidade
 
 @media (prefers-reduced-motion: reduce) {
     .hero__video {
         display: none;
     }
-}
+} */
 
 /* ======================================================
    HERO: ENQUADRAMENTO RESPONSIVO DO VIDEO
@@ -6378,14 +6378,6 @@ h2 {
     .hero__video {
         object-fit: cover;
         object-position: center center;
-    }
-}
-
-/* ACESSIBILIDADE */
-
-@media (prefers-reduced-motion: reduce) {
-    .hero__video {
-        display: none;
     }
 }
 
