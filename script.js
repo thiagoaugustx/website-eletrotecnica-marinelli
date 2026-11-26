@@ -767,8 +767,7 @@ lucide.createIcons();
         mainImage.alt = image.alt;
 
         caption.textContent =
-            `${currentIndex + 1} / ${images.length}` +
-            (image.alt ? ` — ${image.alt}` : "");
+        `${currentIndex + 1} de ${images.length} — Registro em campo ${currentIndex + 1}`;
 
         [...thumbnails.children].forEach((button, buttonIndex) => {
             button.setAttribute(
