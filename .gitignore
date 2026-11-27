@@ -1,0 +1,16 @@
+# Backups locais
+.marinelli-backup/
+
+# Scripts auxiliares de desenvolvimento
+aplicar-alteracoes-marinelli.mjs
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+
+# Arquivos temporarios
+*.tmp
+*.log
