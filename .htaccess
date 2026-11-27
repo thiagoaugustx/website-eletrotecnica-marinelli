@@ -1,0 +1,55 @@
+
+# REDIRECIONAMENTOS - ELETRO MARINELLI
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Restringe as regras ao dominio principal
+    RewriteCond %{HTTP_HOST} !^(www\.)?eletrotecnicamarinelli\.com$ [NC]
+    RewriteRule ^ - [L]
+
+    # Paginas antigas
+    RewriteCond %{THE_REQUEST} "\s/+index\.php[?\s]" [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+    RewriteRule ^servicos(/index\.php|/)?$ /servicos.html [R=301,L]
+    RewriteRule ^contato(/index\.php|/)?$ /contato.html [R=301,L]
+    RewriteRule ^trabalhe-conosco(/index\.php|/)?$ /trabalhe-conosco.html [R=301,L]
+    RewriteRule ^qualidade(/index\.php|/)?$ /qualidade.html [R=301,L]
+    RewriteRule ^sobre(/index\.php|/)?$ /index.html#sobre [R=301,L,NE]
+
+    # Manutencao preventiva e corretiva
+    RewriteCond %{QUERY_STRING} (^|&)id=4(&|$)
+    RewriteRule ^servicos/detalhes\.php$ /manutencao-preventiva-e-corretiva.html [R=301,L,QSD]
+
+    # Inspecoes, testes e parametrizacoes
+    RewriteCond %{QUERY_STRING} (^|&)id=5(&|$)
+    RewriteRule ^servicos/detalhes\.php$ /inspecoes-testes-e-parametrizacoes.html [R=301,L,QSD]
+
+    # Instalacao e retrofit
+    RewriteCond %{QUERY_STRING} (^|&)id=6(&|$)
+    RewriteRule ^servicos/detalhes\.php$ /instalacao-de-sistemas-e-equipamentos-retrofit.html [R=301,L,QSD]
+
+    # Montagem de paineis eletricos
+    RewriteCond %{QUERY_STRING} (^|&)id=7(&|$)
+    RewriteRule ^servicos/detalhes\.php$ /montagem-de-paineis-eletricos.html [R=301,L,QSD]
+
+    # Apoio em provas de mar
+    RewriteCond %{QUERY_STRING} (^|&)id=8(&|$)
+    RewriteRule ^servicos/detalhes\.php$ /apoios-em-provas-de-mar.html [R=301,L,QSD]
+
+    # Identificadores antigos de servicos
+    RewriteCond %{QUERY_STRING} (^|&)id=[123](&|$)
+    RewriteRule ^servicos/detalhes\.php$ /servicos.html [R=301,L,QSD]
+
+    # Politica da qualidade
+    RewriteCond %{QUERY_STRING} (^|&)id=1(&|$)
+    RewriteRule ^qualidade/detalhes\.php$ /qualidade.html [R=301,L,QSD]
+
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php82” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
