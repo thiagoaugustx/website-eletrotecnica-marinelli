@@ -2055,7 +2055,7 @@ a {
 .footer__bottom {
     position: relative;
     border-top: 1px solid var(--footer-line);
-    color: #ffffff1e;
+    color: #b5c5d4;
 }
 
 .footer__bottom::before {
@@ -2085,7 +2085,7 @@ a {
 }
 
 .footer__bottom strong {
-    color: #ffffff1e;
+    color: #cbd7e1;
     font-weight: 600;
     font-size: 10px;
 }
