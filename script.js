@@ -149,139 +149,6 @@ if (header && menuToggle && menu) {
     });
 }
 
-const hero = document.querySelector(".hero--slider");
-
-if (hero) {
-    const slides = [...hero.querySelectorAll(".hero__slide")];
-
-    const images = [
-        "imgs/slide-03.png",
-        "imgs/slide-2.jpg",
-        "imgs/slide-3.jpg",
-        "imgs/slide-4.jpg"
-    ];
-
-    const interval = 5000;
-    const swipeThreshold = 50;
-
-    let currentIndex = 0;
-    let timer;
-    let gesture = null;
-    let suppressClickUntil = 0;
-
-    hero.querySelector(".hero__controls")?.remove();
-
-    slides.forEach((slide, index) => {
-        const image = slide.querySelector(".hero__image");
-
-        if (image && images[index]) {
-            image.src = images[index];
-            image.draggable = false;
-        }
-    });
-
-    function stopTimer() {
-        window.clearTimeout(timer);
-    }
-
-    function restartTimer() {
-        stopTimer();
-
-        if (document.hidden || gesture || slides.length < 2) return;
-
-        timer = window.setTimeout(() => {
-            showSlide(currentIndex + 1);
-        }, interval);
-    }
-
-    function showSlide(index) {
-        if (!slides.length) return;
-
-        currentIndex = (index + slides.length) % slides.length;
-
-        slides.forEach((slide, slideIndex) => {
-            const isActive = slideIndex === currentIndex;
-
-            slide.classList.toggle("is-active", isActive);
-            slide.setAttribute("aria-hidden", String(!isActive));
-            slide.inert = !isActive;
-        });
-
-        restartTimer();
-    }
-
-    function resetGesture() {
-        gesture = null;
-        hero.classList.remove("is-dragging");
-        restartTimer();
-    }
-
-    hero.addEventListener("pointerdown", (event) => {
-        if (!event.isPrimary || event.button !== 0 || gesture) return;
-
-        gesture = {
-            id: event.pointerId,
-            x: event.clientX,
-            y: event.clientY
-        };
-
-        hero.classList.add("is-dragging");
-        stopTimer();
-    });
-
-    window.addEventListener("pointerup", (event) => {
-        if (!gesture || event.pointerId !== gesture.id) return;
-
-        const distanceX = event.clientX - gesture.x;
-        const distanceY = event.clientY - gesture.y;
-
-        const isSwipe =
-            Math.abs(distanceX) >= swipeThreshold &&
-            Math.abs(distanceX) > Math.abs(distanceY) * 1.2;
-
-        gesture = null;
-        hero.classList.remove("is-dragging");
-
-        if (isSwipe) {
-            suppressClickUntil = Date.now() + 400;
-            showSlide(currentIndex + (distanceX < 0 ? 1 : -1));
-        } else {
-            restartTimer();
-        }
-    });
-
-    window.addEventListener("pointercancel", (event) => {
-        if (gesture && event.pointerId === gesture.id) {
-            resetGesture();
-        }
-    });
-
-    window.addEventListener("blur", resetGesture);
-
-    hero.addEventListener("dragstart", (event) => {
-        event.preventDefault();
-    });
-
-    hero.addEventListener("click", (event) => {
-        if (Date.now() < suppressClickUntil) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-    }, true);
-
-    document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            gesture = null;
-            hero.classList.remove("is-dragging");
-            stopTimer();
-        } else {
-            restartTimer();
-        }
-    });
-
-    showSlide(0);
-}
-
 document.querySelectorAll(".servicos").forEach((section) => {
   const track = section.querySelector(".servicos__lista");
   const previous = section.querySelector(".servicos__seta--anterior");
@@ -295,6 +162,8 @@ document.querySelectorAll(".servicos").forEach((section) => {
   const speed = 35;
   let movimentoAcumulado = 0;
 
+  if (!track) return;
+
   const cards = [...track.querySelectorAll(".servico")];
 
   if (!cards.length) return;
@@ -304,6 +173,8 @@ document.querySelectorAll(".servicos").forEach((section) => {
     card.querySelector(".servico__numero")?.remove();
 
     const content = card.querySelector(".servico__conteudo");
+    if (!content) return;
+
     const icon = content.querySelector(".servico__icone");
     const title = content.querySelector("h3");
 
@@ -319,7 +190,7 @@ document.querySelectorAll(".servicos").forEach((section) => {
   });
 
   let cycleWidth = 0;
-  let autoplay = true;
+  let autoplay = !reducedMotion.matches;
   let dragging = false;
   let touching = false;
   let pointerId = null;
@@ -604,8 +475,6 @@ document.querySelectorAll(".servicos").forEach((section) => {
     const phoneNumber = window.WHATSAPP_NUMBER || '5521995966620';
     const message = window.WHATSAPP_MESSAGE || '';
 
-
-
     // Carregar CSS
     function loadButtonCSS() {
         if (!document.querySelector('link[href*="whatsapp-button"]')) {
@@ -641,88 +510,25 @@ document.querySelectorAll(".servicos").forEach((section) => {
         return div.firstElementChild;
     }
 
-    // Inicializar
+    // Inicializar uma única vez.
     function init() {
         loadButtonCSS();
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                if (!document.querySelector("#wa_button")) document.body.appendChild(createButton());
-            });
-        } else {
+        if (!document.querySelector("#wa_button")) {
             document.body.appendChild(createButton());
         }
     }
 
     // Iniciar
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', init, { once: true });
     } else {
         init();
     }
 })();
 
-(() => {
-  const viewer = document.querySelector(".document-viewer");
-
-  if (!viewer) return;
-
-  const pdfPath = viewer.dataset.pdf.trim();
-
-  // Exibe o PDF oficial quando um caminho estiver configurado.
-  if (pdfPath) {
-    const url = new URL(pdfPath, window.location.href);
-
-    const allowedProtocols = ["http:", "https:", "file:"];
-
-    if (!allowedProtocols.includes(url.protocol)) return;
-
-    const frame = viewer.querySelector(".document-frame");
-    const demo = viewer.querySelector(".document-demo");
-    const note = document.querySelector(".viewer-note");
-    const link = document.querySelector(".pdf-link");
-
-    frame.src = url.href;
-    frame.hidden = false;
-
-    demo.hidden = true;
-    note.hidden = true;
-
-    link.href = url.href;
-    link.hidden = false;
-
-    return;
-  }
-
-  // Controles da prévia ilustrativa.
-  let zoom = 100;
-
-  const sheet = viewer.querySelector(".document-sheet");
-  const output = viewer.querySelector("#zoom-value");
-  const buttons = viewer.querySelectorAll("[data-zoom]");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const increment = button.dataset.zoom === "in" ? 10 : -10;
-
-      zoom = Math.max(100, Math.min(160, zoom + increment));
-
-      sheet.style.width = `${zoom}%`;
-      output.value = `${zoom}%`;
-
-      buttons.forEach((control) => {
-        control.disabled =
-          control.dataset.zoom === "out"
-            ? zoom === 100
-            : zoom === 160;
-      });
-    });
-  });
-
-  viewer.querySelector('[data-zoom="out"]').disabled = true;
-})();
-
-lucide.createIcons();
+if (typeof window.lucide?.createIcons === "function") {
+    window.lucide.createIcons();
+}
 
 (() => {
     const gallery = document.querySelector(".field-gallery");
@@ -739,17 +545,10 @@ lucide.createIcons();
     const thumbnails = modal.querySelector(".gallery-modal__thumbnails");
     const imageLinks = [...gallery.querySelectorAll(".field-gallery__grid a")];
 
-    const extraImages = [
-        // { src: "imgs/registro-5.jpg", alt: "Descrição da imagem" }
-    ];
-
-    const images = [
-        ...imageLinks.map((link) => ({
-            src: link.getAttribute("href"),
-            alt: link.querySelector("img")?.alt || ""
-        })),
-        ...extraImages
-    ];
+    const images = imageLinks.map((link) => ({
+        src: link.getAttribute("href"),
+        alt: link.querySelector("img")?.alt || ""
+    }));
 
     let currentIndex = 0;
     let previousFocus = null;
@@ -825,9 +624,10 @@ lucide.createIcons();
 
     previousButton.disabled = images.length < 2;
     nextButton.disabled = images.length < 2;
-    openButton.disabled = images.length === 0;
-
-    openButton.addEventListener("click", () => openGallery());
+    if (openButton) {
+        openButton.disabled = images.length === 0;
+        openButton.addEventListener("click", () => openGallery());
+    }
 
     imageLinks.forEach((link, index) => {
         link.addEventListener("click", (event) => {
@@ -1187,13 +987,13 @@ lucide.createIcons();
     }
 })();
 
+// Endpoint compartilhado pelos formulários.
+const MARINELLI_FORMS_API_URL =
+    "https://marinelli-formularios-api.thiagoacdesouza.workers.dev/api/formularios";
 
 /* INTEGRAÇÃO DO FORMULÁRIO TRABALHE CONOSCO */
 
 (() => {
-  const API_URL =
-    "https://marinelli-formularios-api.thiagoacdesouza.workers.dev/api/formularios";
-
   const LIMITE_PDF = 5 * 1024 * 1024;
 
   function initRecruitmentForm() {
@@ -1207,7 +1007,6 @@ lucide.createIcons();
     const status = form.querySelector("#recruitment-status");
     const label = form.querySelector("[data-submit-label]");
 
-
     function mostrarStatus(texto, tipo) {
     if (!status) return;
 
@@ -1219,7 +1018,6 @@ lucide.createIcons();
         window.MarinelliFeedback?.show(tipo, texto);
     }
     }
-
 
     function lerBase64(arquivo) {
       return new Promise((resolve, reject) => {
@@ -1308,7 +1106,7 @@ lucide.createIcons();
           turnstileToken: token
         };
 
-        const resposta = await fetch(API_URL, {
+        const resposta = await fetch(MARINELLI_FORMS_API_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -1364,17 +1162,9 @@ lucide.createIcons();
   }
 })();
 
-
-
-
-
-
 /* INTEGRAÇÃO DO FORMULÁRIO CONTATO */
 
 (() => {
-    const API_URL =
-        "https://marinelli-formularios-api.thiagoacdesouza.workers.dev/api/formularios";
-
     function initContactForm() {
         const form = document.querySelector("#contact-form");
 
@@ -1385,7 +1175,6 @@ lucide.createIcons();
         const fieldset = form.querySelector("fieldset");
         const status = form.querySelector("#contact-status");
         const label = form.querySelector("[data-contact-submit-label]");
-
 
         function mostrarStatus(mensagem, tipo) {
         if (!status) return;
@@ -1398,7 +1187,6 @@ lucide.createIcons();
             window.MarinelliFeedback?.show(tipo, mensagem);
         }
         }
-
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -1437,7 +1225,7 @@ lucide.createIcons();
             mostrarStatus("Enviando sua mensagem...", "info");
 
             try {
-                const resposta = await fetch(API_URL, {
+                const resposta = await fetch(MARINELLI_FORMS_API_URL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -1492,15 +1280,13 @@ lucide.createIcons();
     }
 })();
 
-
-/* MODAL DE FEEDBACK — MARINELLI */
-
-
 /* =========================================
    MODAL DE FEEDBACK — ELETROTÉCNICA MARINELLI
 ========================================= */
 
 (() => {
+  if (!document.querySelector("#recruitment-form, #contact-form")) return;
+
   const dialog = document.createElement("dialog");
 
   dialog.id = "marinelli-feedback";
@@ -1653,7 +1439,6 @@ lucide.createIcons();
   };
 })();
 
-
 /* =========================================
    REGISTROS EM CAMPO — CARROSSEL CONTÍNUO
 ========================================= */
@@ -1783,6 +1568,7 @@ lucide.createIcons();
       let passo = 0;
       let ciclo = 0;
       let deslocamento = 0;
+      let ultimoDeslocamento = null;
       let iniciou = false;
       let ultimoTempo = 0;
 
@@ -1818,8 +1604,11 @@ lucide.createIcons();
       function desenhar() {
         normalizar();
 
+        if (deslocamento === ultimoDeslocamento) return;
+
         lista.style.transform =
           `translate3d(${-deslocamento}px, 0, 0)`;
+        ultimoDeslocamento = deslocamento;
       }
 
       function medir() {

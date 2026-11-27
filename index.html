@@ -16,7 +16,6 @@
 <header class="header" id="header">
     <nav class="navbar container" aria-label="Navegação principal">
 
-        <!-- LOGO -->
         <a class="navbar__brand" href="index.html" aria-label="Página inicial">
             <img
                 src="imgs/logo-branca.png"
@@ -24,7 +23,6 @@
             >
         </a>
 
-        <!-- BOTÃO MENU MOBILE -->
         <button
             class="navbar__toggle"
             type="button"
@@ -37,7 +35,6 @@
             <span></span>
         </button>
 
-        <!-- MENU -->
         <div class="navbar__menu" id="navbar-menu">
 
             <ul class="navbar__links">
@@ -48,7 +45,6 @@
                     </a>
                 </li>
 
-                <!-- QUALIDADE -->
                 <li class="navbar__dropdown">
 
                     <div class="navbar__dropdown-trigger">
@@ -76,7 +72,6 @@
                     </ul>
                 </li>
 
-                <!-- SERVIÇOS -->
                 <li class="navbar__dropdown">
 
                     <div class="navbar__dropdown-trigger">
@@ -142,7 +137,6 @@
 
             </ul>
 
-            <!-- CTA -->
             <a
                 class="button button--primary navbar__cta"
                 href="https://wa.me/5521995966620"
@@ -165,192 +159,43 @@
             aria-label="Serviços da Eletro Marinelli"
             aria-roledescription="carrossel"
         >
-            <div class="hero__slides" id="hero-slides">
+        <div class="hero__slides" id="hero-slides">
 
-<article
-    class="hero__slide is-active"
-    role="group"
-    aria-roledescription="slide"
-    aria-label="1 de 4"
->
+            <article class="hero__slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 4">
 
-<!-- VÍDEO RESPONSIVO DO HERO BANNER -->
-<video
-    class="hero__video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    aria-hidden="true"
->
-    <source
-        src="imgs/hero-banner-barco-vertical.mp4"
-        type="video/mp4"
-        media="(max-width: 767px)"
-    >
+                    <!-- VÍDEO RESPONSIVO DO HERO BANNER -->
+                    <video class="hero__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+                        <source src="imgs/hero-banner-barco-vertical.mp4" type="video/mp4" media="(max-width: 767px)">
+                        <source src="imgs/hero-banner-barco.mp4" type="video/mp4">
+                    </video>
 
-    <source
-        src="imgs/hero-banner-barco.mp4"
-        type="video/mp4"
-    >
-</video>
+                    <div class="container hero__slide-layout">
+                        <div class="hero__content">
 
-    <div class="container hero__slide-layout">
-        <div class="hero__content">
+                            <p class="hero__eyebrow">
+                                Elétrica Naval & Industrial
+                            </p>
 
-            <p class="hero__eyebrow">
-                Elétrica Naval & Industrial
-            </p>
+                            <h1 class="hero__title">
+                                Contribuindo para operações
+                                <span> seguras e eficientes.</span>
+                            </h1>
 
-            <h1 class="hero__title">
-                Contribuindo para operações
-                <span> seguras e eficientes.</span>
-            </h1>
+                            <p class="hero__description">
+                                Há mais de 20 anos oferecendo soluções com qualidade.
+                            </p>
 
-            <p class="hero__description">
-                Há mais de 20 anos oferecendo soluções com qualidade.
-            </p>
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="servicos.html">
+                                    Conheça nossos serviços
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
 
-            <div class="hero__actions">
-                <a
-                    class="button button--primary"
-                    href="servicos.html"
-                >
-                    Conheça nossos serviços
-                    <span aria-hidden="true">→</span>
-                </a>
-            </div>
-
+                        </div>
+                    </div>
+            </article>
         </div>
-    </div>
-</article>
-
-
-                <!--<article
-                    class="hero__slide"
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label="2 de 4"
-                    aria-hidden="true"
-                    inert
-                >
-                    <img
-                        class="hero__image"
-                        src="imgs/slide-02.png"
-                        alt=""
-                    >
-
-                    <div class="container hero__slide-layout">
-                        <div class="hero__content">
-                            <p class="hero__eyebrow">
-                                Elétrica Naval & Industrial
-                            </p>
-
-                            <h2 class="hero__title">
-                                Apoio em
-                                <span>provas de mar.</span>
-                            </h2>
-
-                            <p class="hero__description">
-                                Suporte técnico especializado em sistemas elétricos
-                                durante provas de mar e DP Trials, assegurando o correto
-                                acompanhamento dos testes, a confiabilidade dos sistemas
-                                e o pleno atendimento às necessidades operacionais
-                                da embarcação.
-                            </p>
-
-                            <div class="hero__actions">
-                                <a class="button button--primary" href="#servicos">
-                                    Conheça nossos serviços
-                                    <span aria-hidden="true">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article
-                    class="hero__slide"
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label="3 de 4"
-                    aria-hidden="true"
-                    inert
-                >
-                    <img
-                        class="hero__image"
-                        src="imgs/slide-02.png"
-                        alt=""
-                    >
-
-                    <div class="container hero__slide-layout">
-                        <div class="hero__content">
-                            <p class="hero__eyebrow">
-                                Elétrica Naval & Industrial
-                            </p>
-
-                            <h2 class="hero__title">
-                                Manutenção
-                                <span>preventiva e corretiva.</span>
-                            </h2>
-
-                            <p class="hero__description">
-                                Ações técnicas para evitar falhas e corrigir
-                                defeitos em sistemas elétricos e industriais.
-                            </p>
-
-                            <div class="hero__actions">
-                                <a class="button button--primary" href="#servicos">
-                                    Conheça nossos serviços
-                                    <span aria-hidden="true">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article
-                    class="hero__slide"
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label="4 de 4"
-                    aria-hidden="true"
-                    inert
-                >
-                    <img
-                        class="hero__image"
-                        src="imgs/slide-02.png"
-                        alt=""
-                    >
-
-                    <div class="container hero__slide-layout">
-                        <div class="hero__content">
-                            <p class="hero__eyebrow">
-                                Elétrica Naval & Industrial
-                            </p>
-
-                            <h2 class="hero__title">
-                                Inspeções, testes
-                                <span>e parametrizações.</span>
-                            </h2>
-
-                            <p class="hero__description">
-                                Verificações técnicas que garantem desempenho,
-                                segurança e ajustes precisos em sistemas
-                                elétricos e industriais.
-                            </p>
-
-                            <div class="hero__actions">
-                                <a class="button button--primary" href="#servicos">
-                                    Conheça nossos serviços
-                                    <span aria-hidden="true">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </article> -->
-            </div>
 
 
             <p class="sr-only" data-slide-status aria-live="polite" aria-atomic="true"></p>
@@ -968,8 +813,6 @@
         </div>
     </div>
 </footer>
-
-<!-- BOTÃO WHATSAPP -->
 
 <!-- Botão WhatsApp Flutuante --> <script> window.WHATSAPP_NUMBER = "5521995966620"; </script>
 
